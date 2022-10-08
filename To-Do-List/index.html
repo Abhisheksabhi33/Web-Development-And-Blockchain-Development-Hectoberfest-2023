@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>To Do List</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<h1>To Do List</h1>
+	<form action="add" method="get">
+		<label>Add Task: </label> 
+		<input type="text" name="item">
+		<input id="addTask" class="task-button" type="submit" value="Add">
+		<input id="removeTask" class="task-button" type="submit" value="Remove">
+	</form>
+	<h3> Tasks To Do: </h3>
+		<ul class='list'>
+		</ul>	
+	<h3> Tasks Completed: </h3>
+		<ul class='list'>
+		</ul>
+	
+</body>
+</html>
