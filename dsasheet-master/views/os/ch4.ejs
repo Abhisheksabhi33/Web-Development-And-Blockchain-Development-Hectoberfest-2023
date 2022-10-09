@@ -1,0 +1,214 @@
+<%- include('./osPartials/templateStart') %>
+
+<h1 style=" text-align:center; font-size: 40px;font-weight: 900;">Threads</h1><hr>
+
+A thread is a basic unit of CPU utilization.
+<br><br>
+A thread comprises of :
+<ul>
+    <li>thread ID</li>
+    <li>program counter</li>
+    <li>register set</li>
+    <li>stack</li>
+</ul>
+A thread shares code section, data section, and other operating system resources like open files and signals, with other threads of the same process.
+
+<br><br>
+A traditional (or heavyweight) process has a single thred of control.
+<br>
+A multithreaded process has more than one thread.
+<br><br>
+<h3><b><u>Motivation</u></b></h3>
+
+<ul>
+    <li>Most modern applications are multithreaded.</li>
+    <li>Threads run within applications.</li>
+    <li>Multiple tasks with the application can be implemented by seperate threads:
+        <ul>
+            <li>Update display</li>
+            <li>Fetch data</li>
+            <li>spell checking</li>
+            <li>Answer a network request</li>
+        </ul>
+    </li>
+    <li>Process creation is heavy-weight where as thread creation is light-weight.</li>
+    <li>Can simplify code, increase efficiency.</li>
+    <li>Kernels are generally multithreaded.</li>
+</ul>
+
+<br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_01_ThreadDiagram.jpg">
+
+
+<br><br>
+<h3><b><u>Benefits of multithreaded programming</u></b></h3>
+<ol>
+    <li>
+        <b>Responsiveness</b>: Multithreading an interactive application may allow
+        a program to continue running even if part of it is blocked or is
+        performing a lengthy operation, thereby increasing responsiveness to
+        the user. This quality is especially useful in designing user interfaces.
+    </li>
+    <li>
+        <b>Resource sharing</b>: Threads share the resources of their process. Whereas process share resources using techniques like shared memory and message passing which are more complicated to design.
+    </li>
+    <li>
+        <b>Economy</b>: Allocating memory and resources for process creation is costly.
+        Because threads share the resources of the process to which they belong,
+        it is more economical to create and context-switch threads. 
+    </li>
+    <li>
+        <b>Scalability</b>: The benefits of multithreading can be even greater in a
+        multiprocessor architecture, where threads may be running in parallel
+        on different processing cores. A single-threaded process can run on only
+        one processor, regardless how many are available. 
+    </li>
+</ol>
+
+<h4>Multicore programming</h4>
+Earlier in the history, only single-CPU systems (single CPU on a chip) were available but in recent times multi-CPU systems (multiple CPUs on single chip) are in demand. 
+These types of systems are also called multiprocessor systems.
+
+<br>Multithreaded programming provides a mechanism for more efficient use
+of these multiple computing cores and improved concurrency
+
+<br><br>
+Consider an application with four threads. On a system with multiple cores, concurrency means that some threads can run in parallel, because the system can assign a seperate thread to each core.
+
+<br><br>
+concurrent execution on single-core system:
+<br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_03_ConcurrentSingleCore.jpg">
+<br><br>
+parallelism on multi-core system:
+<br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_04_ParralelMulticore.jpg">
+<br><br>
+Notice the distinction between <b>parallelism</b> and <b>concurrency</b> in this discussion. A system is parallel if it can perform more than one task simultaneously.
+In contrast, a concurrent system supports more than one task by allowing all
+the tasks to make progress. Thus, it is possible to have concurrency without
+parallelism. Before the advent of SMP and multicore architectures, most computer systems had only a single processor. CPU schedulers were designed to
+provide the illusion of parallelism by rapidly switching between processes in the system, thereby allowing each process to make progress. Such processes
+were running concurrently, but not in parallel.
+
+<br><br>
+<img src="https://i.stack.imgur.com/mUlNV.jpg"><br><br>
+<a href="https://www.geeksforgeeks.org/difference-between-concurrency-and-parallelism/#:~:text=Difference%20between%20Concurrency%20and%20Parallelism%3A%2D&text=Concurrency%20is%20the%20task%20of,of%20running%20multiple%20computations%20simultaneously." target="_blank">Concurrency vs parallelism (gfg)</a>
+<br>
+<a href="https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concurrency-and-parallelism" target="_blank">Concurrency vs parallelism (stackoverflow)</a>
+
+<br><br>
+<h4>Challenges in multiprocessor or multicore systems</h4>
+The trend towards multicore systems continues to place pressure on system
+designers and application programmers to make better use of the multiple
+computing cores. Designers of operating systems must write scheduling
+algorithms that use multiple processing cores to allow the parallel execution. For application programmers, the challenge is to modify
+existing programs as well as design new programs that are multithreaded.
+<ol>
+    <li>Dividing activites</li>
+    <li>Balance</li>
+    <li>Data splitting</li>
+    <li>Data dependency</li>
+    <li>Testing and debugging</li>
+</ol>
+
+
+
+<h3><u><b>Amdahl's Law</b></u></h3>
+<ul>
+    <li>
+        This law helps in identifying perfomance gains from adding additional cores to an application that has both serial and non-serial components.
+    </li>
+    <li>
+        s is the portion of the application that must be performed serially on a system with N processing cores.
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYHuU0X32kZ23EUgLVUKXc3TsAH3oZs93T1w&usqp=CAU" alt="">
+    </li>
+    <li>
+        That is, if an application is 75% parallel and 25% serial, moving from 1 to 2 cores results in speedup of 1.6 times.
+    </li>
+    <li>As N approaches to infinity, speedup approaches to 1/s</li>
+    <li>
+        <b>Serial portion of an application has disproportionate effect on performance gained by adding additional cores.</b>
+    </li>
+</ul>
+
+<img src="http://rits.github-pages.ucl.ac.uk/intro-hpchtc/morea/lesson2/images/amdahl.png" alt="">
+
+
+<br><br>
+<h4>Types of Parallelism</h4>
+<ol>
+    <li>
+        <b>Data Parallelism</b>: The focus is on distributing subsets of the same data across multiple computing cores and performing the same operation on each core.
+    </li>
+    <li>
+        <b>Task Parallelism</b>: Involves distributing not data but tasks(threads) across mulitple computing cores. Each thread is performing a unique opertion. Different threads may be operating on the same data, or they may be operating on different data.
+    </li>
+</ol>
+
+<h3><u><b>Multithreading Models</b></u></h3>
+
+<ul>
+    <li>There are two types of threads to be managed in a modern system: User threads and kernel threads.</li>
+    <li>User threads are supported above the kernel, without kernel support. These are the threads that application programmers would put into their programs.</li>
+    <li>Kernel threads are supported within the kernel of the OS itself. All modern OSes support kernel level threads, allowing the kernel to perform multiple simultaneous tasks and/or to service multiple kernel system calls simultaneously.</li>
+    <li>In a specific implementation, the user threads must be mapped to kernel threads, using one of the following strategies.
+    </li>
+</ul>
+
+<h4>1. Many-to-One Model</h4>
+
+Advantages 
+<ul>
+    <li>Maps many user-level threads to one kernel thread.</li>
+    <li>Thread management is done by the thread library in user space, so it is efficient.</li>
+</ul>
+
+Disadvantages
+<ul>
+    <li>The entire process will block if a thread makes a blocking system call.</li>
+    <li>Because only one thread can access the kernel at a time, multiple threads are unable to run in parallel in multiprocessor system.</li>
+</ul>
+
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_05_ManyToOne.jpg" alt="">
+
+<br>
+<h4>2. One-to-One Model </h4>
+Advantages 
+<ul>
+    <li>Maps each user thread to a kernel thread.</li>
+    <li>Provides more concurrency than the many-to-one by allowing another thread to run when a thread makes a blocking system call.</li>
+    <li>Also allows multiple threads to run in parallel on multiprocessors.</li>
+</ul>
+
+Disadvantages 
+<ul>
+    <li>Creating a user thread requires creating the corresponding kernel thread.</li>
+    <li>Because the overhead of creating kernel threads can burden the performance of an application, most implementations of this model restrict the number of threads supported by the system.</li>
+</ul>
+
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_06_OneToOne.jpg" alt="">
+<br>
+<h4>3. Many-to-Many Model</h4>
+
+Advantages 
+<ul>
+    <li>Multiplexes many user-level threads to a smaller or equal number of kernel threads.</li>
+    <li>The number of kernel threads may be specific to either a particular application or a particular machine.</li>
+    <li>Developers can create as many user threads as necessary, and the corresponding kernel threads can run in parallel on a multiprocessor.</li>
+    <li>Also, when a thread performs a blocking system call, the kernel can schedule another thread for execution.</li>
+</ul>
+
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_07_ManyToMany.jpg" alt="">
+<br>
+
+
+
+
+
+
+
+
+
+
+<%- include('./osPartials/templateEnd') %>

@@ -1,0 +1,85 @@
+#osContainer{
+   display: grid;
+   /* height: 100vh; */
+                        grid-template-columns: repeat(12,1fr);
+                        grid-template-rows:1fr 1fr 1fr 1fr 1fr 1fr;
+                        grid-template-areas:"a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b";
+
+}
+
+#chapters{
+    grid-area: a;
+    background-color: seagreen;
+    padding: 5px;
+    color: white;
+    /* font-weight: 700; */
+    user-select: none;
+
+}
+#content{
+    grid-area: b;
+    padding: 10px;
+    /* background-color: lightgray; */
+    /* background-image: url("https://img.freepik.com/free-photo/vintage-crumpled-paper-textured-background_53876-103940.jpg?w=740&t=st=1661060662~exp=1661061262~hmac=d3ba0b2efc6616ac3afdadbca00750cf5b753b27319577d65f7f66cc35b6c8dd"); */
+    background-color: rgb(208, 218, 215);;
+    /* background-image: url("https://img.freepik.com/free-photo/vintage-crumpled-paper-textured-background_53876-103940.jpg?w=740&t=st=1661060662~exp=1661061262~hmac=d3ba0b2efc6616ac3afdadbca00750cf5b753b27319577d65f7f66cc35b6c8dd"); */
+    /* background-image: url("https://cdn.pixabay.com/photo/2017/02/08/23/56/paper-2050768_960_720.jpg"); */
+}
+
+@media (max-width: 768px) {
+
+    #osContainer{
+        grid-template-rows:.01fr 1fr 1fr;
+        grid-template-areas:"a a a a a a a a a a a a"
+                            "b b b b b b b b b b b b"
+                            "b b b b b b b b b b b b"
+                            ;
+    }
+    .youtubeVid{
+        width: 90%;
+    }
+  
+}
+
+li{
+    display: list-item;
+    list-style-position: inside;
+    margin: 4px;
+}
+
+#chapters>ol>li{
+        display: list-item;
+        list-style-position: inside;
+        margin: 4px;
+        cursor: pointer;
+    
+
+}
+
+
+
+ol>hr{
+    background-color: cyan;
+}
+.osOl>li:hover{
+    color: navy; 
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-height: 400px;
+}
+
+.formula{
+    border: 1px solid black;
+    padding: 3px;
+    background-color: lightyellow;
+}

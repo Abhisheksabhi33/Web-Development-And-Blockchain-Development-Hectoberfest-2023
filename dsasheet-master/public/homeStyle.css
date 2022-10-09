@@ -1,0 +1,29 @@
+
+.itemContainer{
+    margin-top: 30px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+.mainItems{
+    border: 1px solid;
+    box-shadow: 5px 10px #888888;
+    margin: 20px;
+    width: 290px;
+    height:254px;
+    display: flex;
+    font-size: 30px;
+    cursor: pointer;
+    flex-direction: column;
+}
+.mainItems>div{
+    background-color: rgb(8, 3, 56);
+    font-size: 25px;
+    padding:5px;
+    /* border: 1px solid black; */
+    color: white;
+}
+

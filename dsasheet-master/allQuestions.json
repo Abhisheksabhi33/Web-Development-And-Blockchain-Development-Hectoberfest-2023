@@ -1,0 +1,1291 @@
+[
+{
+    "qid" : "1",
+    "name" : "Set Matrix Zeroes",
+    "url" : "https://leetcode.com/problems/set-matrix-zeroes/",
+    "cat" : "array"
+}
+,
+{
+    "qid" : "2",
+    "name" : "Pascal’s Triangle",
+    "url" : "https://leetcode.com/problems/pascals-triangle/",
+    "cat" : "array"
+}
+,
+{
+    "qid" : "3",
+    "name" : "Next Permutation",
+    "url" : "https://leetcode.com/problems/next-permutation/",
+    "cat" : "array"
+}
+,
+{
+    "qid" : "4",
+    "name" : "Kadane’s Algorithm",
+    "url" : "https://leetcode.com/problems/maximum-subarray/",
+    "cat" : "array"
+}
+
+,
+{
+    "qid" : "5",
+    "name" : "Sort an array of 0’s 1’s 2’s",
+    "url" : "https://leetcode.com/problems/sort-colors/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "6",
+    "name" : "Stock buy and Sell",
+    "url" : "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "7",
+    "name" : "Rotate Matrix",
+    "url" : "https://leetcode.com/problems/rotate-image/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "8",
+    "name" : "Merge Overlapping Subintervals",
+    "url" : "https://leetcode.com/problems/merge-intervals/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "9",
+    "name" : "Merge two sorted Arrays without extra space",
+    "url" : "https://leetcode.com/problems/merge-sorted-array/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "10",
+    "name" : "Find the duplicate in an array of N+1 integers.",
+    "url" : "https://leetcode.com/problems/find-the-duplicate-number/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "11",
+    "name" : "Repeat and Missing Number",
+    "url" : "https://www.interviewbit.com/problems/repeat-and-missing-number-array/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "12",
+    "name" : "Inversion of Array (Pre-req: Merge Sort)",
+    "url" : "https://www.codingninjas.com/codestudio/problems/count-inversions_615",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "13",
+    "name" : "Search in a 2d Matrix",
+    "url" : "https://leetcode.com/problems/search-a-2d-matrix/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "14",
+    "name" : "Pow(X,n)",
+    "url" : "https://leetcode.com/problems/powx-n/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "15",
+    "name" : "Majority Element (>N/2 times)",
+    "url" : "https://leetcode.com/problems/majority-element/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "16",
+    "name" : "Majority Element (>N/3 times)",
+    "url" : "https://leetcode.com/problems/majority-element-ii/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "17",
+    "name" : "Grid Unique Paths",
+    "url" : "https://leetcode.com/problems/unique-paths/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "18",
+    "name" : "Reverse Pairs (Leetcode)",
+    "url" : "https://leetcode.com/problems/reverse-pairs/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "19",
+    "name" : "2-Sum-Problem",
+    "url" : "https://leetcode.com/problems/two-sum/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "20",
+    "name" : "4-sum-Problem",
+    "url" : "https://leetcode.com/problems/4sum/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "21",
+    "name" : "Longest Consecutive Sequence",
+    "url" : "https://leetcode.com/problems/longest-consecutive-sequence/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "22",
+    "name" : "Largest Subarray with 0 sum",
+    "url" : "https://practice.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "23",
+    "name" : "Count number of subarrays with given Xor K",
+    "url" : "https://www.interviewbit.com/problems/subarray-with-given-xor/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "24",
+    "name" : "Longest Substring without repeat",
+    "url" : "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+    "cat" : "array"
+}
+
+,{
+    "qid" : "25",
+    "name" : "Reverse a LinkedList",
+    "url" : "https://leetcode.com/problems/reverse-linked-list/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "26",
+    "name" : "Find the middle of LinkedList",
+    "url" : "https://leetcode.com/problems/middle-of-the-linked-list/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "27",
+    "name" : "Merge two sorted Linked List (use method used in mergeSort)",
+    "url" : "https://leetcode.com/problems/merge-two-sorted-lists/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "28",
+    "name" : "Remove N-th node from back of LinkedList",
+    "url" : "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "29",
+    "name" : "Add two numbers as LinkedList",
+    "url" : "https://leetcode.com/problems/add-two-numbers/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "30",
+    "name" : "Delete a given Node when a node is given.(0(1) solution)",
+    "url" : "https://leetcode.com/problems/delete-node-in-a-linked-list/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "31",
+    "name" : "Find intersection point of Y LinkedList",
+    "url" : "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "32",
+    "name" : "Detect a cycle in Linked List",
+    "url" : "https://leetcode.com/problems/linked-list-cycle/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "33",
+    "name" : "Reverse a LinkedList in groups of size k.",
+    "url" : "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "34",
+    "name" : "Check if a LinkedList is palindrome or not.",
+    "url" : "https://leetcode.com/problems/palindrome-linked-list/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "35",
+    "name" : "Find the starting point of the Loop of LinkedList",
+    "url" : "https://leetcode.com/problems/linked-list-cycle-ii/",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "36",
+    "name" : "Flattening of a LinkedList",
+    "url" : "https://practice.geeksforgeeks.org/problems/flattening-a-linked-list/1",
+    "cat" : "linkedList"
+}
+
+,{
+    "qid" : "37",
+    "name" : "Rotate a LinkedList",
+    "url" : "https://leetcode.com/problems/rotate-list/description/",
+    "cat" : "linkedListAndArrays"
+}
+
+,{
+    "qid" : "38",
+    "name" : "Clone a Linked List with random and next pointer",
+    "url" : "https://leetcode.com/problems/copy-list-with-random-pointer/",
+    "cat" : "linkedListAndArrays"
+}
+
+,{
+    "qid" : "39",
+    "name" : "3 sum",
+    "url" : "https://leetcode.com/problems/3sum/",
+    "cat" : "linkedListAndArrays"
+}
+
+,{
+    "qid" : "40",
+    "name" : "Trapping rainwater",
+    "url" : "https://leetcode.com/problems/trapping-rain-water/",
+    "cat" : "linkedListAndArrays"
+}
+
+,{
+    "qid" : "41",
+    "name" : "Remove Duplicate from Sorted array",
+    "url" : "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+    "cat" : "linkedListAndArrays"
+}
+
+,{
+    "qid" : "42",
+    "name" : "Max consecutive ones",
+    "url" : "https://leetcode.com/problems/max-consecutive-ones/",
+    "cat" : "linkedListAndArrays"
+}
+
+,{
+    "qid" : "43",
+    "name" : "N meetings in one room",
+    "url" : "https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1",
+    "cat" : "greedy"
+}
+
+,{
+    "qid" : "44",
+    "name" : "Minimum number of platforms required for a railway",
+    "url" : "https://practice.geeksforgeeks.org/problems/minimum-platforms-1587115620/1#",
+    "cat" : "greedy"
+}
+
+,{
+    "qid" : "45",
+    "name" : "Job sequencing Problem",
+    "url" : "https://practice.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1#",
+    "cat" : "greedy"
+}
+
+,{
+    "qid" : "46",
+    "name" : "Fractional Knapsack Problem",
+    "url" : "https://practice.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1",
+    "cat" : "greedy"
+}
+
+,{
+    "qid" : "47",
+    "name" : "Greedy algorithm to find minimum number of coins",
+    "url" : "https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/",
+    "cat" : "greedy"
+}
+
+,{
+    "qid" : "48",
+    "name" : "Activity Selection (it is the same as N meeting in one room)",
+    "url" : "https://practice.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1",
+    "cat" : "greedy"
+}
+
+,{
+    "qid" : "49",
+    "name" : "Subset Sums",
+    "url" : "https://practice.geeksforgeeks.org/problems/subset-sums2234/1",
+    "cat" : "recursion"
+}
+
+,{
+    "qid" : "50",
+    "name" : "Subset-II",
+    "url" : "https://leetcode.com/problems/subsets-ii/",
+    "cat" : "recursion"
+}
+
+,{
+    "qid" : "51",
+    "name" : "Combination sum-1",
+    "url" : "https://leetcode.com/problems/combination-sum/",
+    "cat" : "recursion"
+}
+
+,{
+    "qid" : "52",
+    "name" : "Combination sum-2",
+    "url" : "https://leetcode.com/problems/combination-sum-ii/",
+    "cat" : "recursion"
+}
+
+,{
+    "qid" : "53",
+    "name" : "Palindrome Partitioning",
+    "url" : "https://leetcode.com/problems/palindrome-partitioning/",
+    "cat" : "recursion"
+}
+
+,{
+    "qid" : "54",
+    "name" : "K-th permutation Sequence",
+    "url" : "https://leetcode.com/problems/permutation-sequence/",
+    "cat" : "recursion"
+}
+
+,{
+    "qid" : "55",
+    "name" : "Print all permutations of a string/array",
+    "url" : "https://leetcode.com/problems/permutations/",
+    "cat" : "recursionAndBacktracking"
+}
+
+,{
+    "qid" : "56",
+    "name" : "N queens Problem",
+    "url" : "https://leetcode.com/problems/n-queens/",
+    "cat" : "recursionAndBacktracking"
+}
+
+,{
+    "qid" : "57",
+    "name" : "Sudoku Solver",
+    "url" : "https://leetcode.com/problems/sudoku-solver/",
+    "cat" : "recursionAndBacktracking"
+}
+
+,{
+    "qid" : "58",
+    "name" : "M coloring Problem",
+    "url" : "https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1#",
+    "cat" : "recursionAndBacktracking"
+}
+
+,{
+    "qid" : "59",
+    "name" : "Rat in a Maze",
+    "url" : "https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1",
+    "cat" : "recursionAndBacktracking"
+}
+
+,{
+    "qid" : "60",
+    "name" : "Word Break (print all ways)",
+    "url" : "https://bit.ly/3FxgW92",
+    "cat" : "recursionAndBacktracking"
+}
+
+,{
+    "qid" : "61",
+    "name" : "The N-th root of an integer",
+    "url" : "https://bit.ly/3rj7Ib1",
+    "cat" : "binarySearch"
+}
+
+,{
+    "qid" : "62",
+    "name" : "Matrix Median",
+    "url" : "https://www.interviewbit.com/problems/matrix-median/",
+    "cat" : "binarySearch"
+}
+
+,{
+    "qid" : "63",
+    "name" : "Find the element that appears once in a sorted array, and the rest element appears twice (Binary search)",
+    "url" : "https://leetcode.com/problems/single-element-in-a-sorted-array/",
+    "cat" : "binarySearch"
+}
+
+,{
+    "qid" : "64",
+    "name" : "Search element in a sorted and rotated array/ find pivot where it is rotated",
+    "url" : "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+    "cat" : "binarySearch"
+}
+
+,{
+    "qid" : "65",
+    "name" : "Median of 2 sorted arrays",
+    "url" : "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+    "cat" : "binarySearch"
+}
+
+,{
+    "qid" : "66",
+    "name" : "K-th element of two sorted arrays",
+    "url" : "https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1",
+    "cat" : "binarySearch"
+}
+
+,{
+    "qid" : "67",
+    "name" : "Allocate Minimum Number of Pages",
+    "url" : "https://www.interviewbit.com/problems/allocate-books/",
+    "cat" : "binarySearch"
+}
+
+,{
+    "qid" : "68",
+    "name" : "Aggressive Cows",
+    "url" : "https://www.spoj.com/problems/AGGRCOW/",
+    "cat" : "binarySearch"
+}
+
+,{
+    "qid" : "69",
+    "name" : "Max heap, Min Heap Implementation (Only for interviews)",
+    "url" : "https://www.codingninjas.com/codestudio/problems/min-heap_4691801?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website",
+    "cat" : "heap"
+}
+
+,{
+    "qid" : "70",
+    "name" : "Kth Largest Element",
+    "url" : "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+    "cat" : "heap"
+}
+
+,{
+    "qid" : "71",
+    "name" : "Maximum Sum Combination",
+    "url" : "https://www.interviewbit.com/problems/maximum-sum-combinations/",
+    "cat" : "heap"
+}
+
+,{
+    "qid" : "72",
+    "name" : "Find Median from Data Stream",
+    "url" : "https://leetcode.com/problems/find-median-from-data-stream/",
+    "cat" : "heap"
+}
+
+,{
+    "qid" : "73",
+    "name" : "Merge K sorted arrays",
+    "url" : "https://www.codingninjas.com/codestudio/problems/merge-k-sorted-arrays_975379",
+    "cat" : "heap"
+}
+
+,{
+    "qid" : "74",
+    "name" : "K most frequent elements",
+    "url" : "https://leetcode.com/problems/top-k-frequent-elements/",
+    "cat" : "heap"
+}
+
+,{
+    "qid" : "75",
+    "name" : "Implement Stack Using Arrays",
+    "url" : "https://bit.ly/3KbHhN4",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "76",
+    "name" : "Implement Queue Using Arrays",
+    "url" : "https://bit.ly/3KbIjIW",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "77",
+    "name" : "Implement Stack using Queue (using single queue)",
+    "url" : "https://leetcode.com/problems/implement-stack-using-queues/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "78",
+    "name" : "Implement Queue using Stack (0(1) amortized method)",
+    "url" : "https://leetcode.com/problems/implement-queue-using-stacks/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "79",
+    "name" : "Check for balanced parentheses",
+    "url" : "https://leetcode.com/problems/valid-parentheses/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "80",
+    "name" : "Next Greater Element",
+    "url" : "https://leetcode.com/problems/next-greater-element-i/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "81",
+    "name" : "Sort a Stack",
+    "url" : "https://bit.ly/3nptF7k",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "82",
+    "name" : "Next Smaller Element",
+    "url" : "https://www.interviewbit.com/problems/nearest-smaller-element/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "83",
+    "name" : "LRU cache (IMPORTANT)",
+    "url" : "https://leetcode.com/problems/lru-cache/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "84",
+    "name" : "LFU Cache",
+    "url" : "https://leetcode.com/problems/lfu-cache/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "85",
+    "name" : "Largest rectangle in a histogram",
+    "url" : "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "86",
+    "name" : "Sliding Window maximum",
+    "url" : "https://leetcode.com/problems/sliding-window-maximum/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "87",
+    "name" : "Implement Min Stack",
+    "url" : "https://leetcode.com/problems/min-stack/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "88",
+    "name" : "Rotten Orange (Using BFS)",
+    "url" : "https://leetcode.com/problems/rotting-oranges/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "89",
+    "name" : "Stock Span Problem",
+    "url" : "https://leetcode.com/problems/online-stock-span/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "90",
+    "name" : "Find the maximum of minimums of every window size",
+    "url" : "https://bit.ly/3zUYLZz",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "91",
+    "name" : "The Celebrity Problem",
+    "url" : "https://leetcode.com/accounts/login/?next=/problems/find-the-celebrity/",
+    "cat" : "stackAndQueue"
+}
+
+,{
+    "qid" : "92",
+    "name" : "Reverse Words in a String",
+    "url" : "https://leetcode.com/problems/reverse-words-in-a-string/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "93",
+    "name" : "Longest Palindrome in a string",
+    "url" : "https://leetcode.com/problems/longest-palindromic-substring/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "94",
+    "name" : "Roman Number to Integer and vice versa",
+    "url" : "https://leetcode.com/problems/roman-to-integer/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "95",
+    "name" : "Implement ATOI/STRSTR",
+    "url" : "https://leetcode.com/problems/string-to-integer-atoi/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "96",
+    "name" : "Longest Common Prefix",
+    "url" : "https://leetcode.com/problems/longest-common-prefix/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "97",
+    "name" : "Rabin Karp",
+    "url" : "https://leetcode.com/problems/repeated-string-match/discuss/416144/Rabin-Karp-algorithm-C%2B%2B-implementation",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "98",
+    "name" : "Z-Function",
+    "url" : "https://leetcode.com/problems/implement-strstr/",
+    "cat" : "string"
+}
+,{
+    "qid" : "99",
+    "name" : "KMP algo / LPS(pi) array",
+    "url" : "https://leetcode.com/problems/implement-strstr/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "100",
+    "name" : "Minimum characters needed to be inserted in the beginning to make it palindromic",
+    "url" : "https://www.interviewbit.com/problems/minimum-characters-required-to-make-a-string-palindromic/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "101",
+    "name" : "Check for Anagrams",
+    "url" : "https://leetcode.com/problems/valid-anagram/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "102",
+    "name" : "Count and Say",
+    "url" : "https://leetcode.com/problems/count-and-say/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "103",
+    "name" : "Compare version numbers",
+    "url" : "https://leetcode.com/problems/compare-version-numbers/",
+    "cat" : "string"
+}
+
+,{
+    "qid" : "104",
+    "name" : "Inorder Traversal",
+    "url" : "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "105",
+    "name" : "Preorder Traversal",
+    "url" : "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "106",
+    "name" : "Postorder Traversal",
+    "url" : "https://leetcode.com/problems/binary-tree-postorder-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "107",
+    "name" : "Morris Inorder Traversal",
+    "url" : "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "108",
+    "name" : "Morris Preorder Traversal",
+    "url" : "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "109",
+    "name" : "LeftView Of Binary Tree",
+    "url" : "https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "110",
+    "name" : "Bottom View of Binary Tree",
+    "url" : "https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "111",
+    "name" : "Top View of Binary Tree",
+    "url" : "https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "112",
+    "name" : "Preorder inorder postorder in a single traversal",
+    "url" : "https://bit.ly/3rlXpTX",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "113",
+    "name" : "Vertical order traversal",
+    "url" : "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "114",
+    "name" : "Root to node path in a Binary Tree",
+    "url" : "https://www.interviewbit.com/problems/path-to-given-node/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "115",
+    "name" : "Max width of a Binary Tree",
+    "url" : "https://leetcode.com/problems/maximum-width-of-binary-tree/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "116",
+    "name" : "Level order Traversal / Level order traversal in spiral form",
+    "url" : "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "117",
+    "name" : "Height of a Binary Tree",
+    "url" : "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "118",
+    "name" : "Diameter of a Binary Tree",
+    "url" : "https://leetcode.com/problems/diameter-of-binary-tree/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "119",
+    "name" : "Check if the Binary tree is height-balanced or not",
+    "url" : "https://leetcode.com/problems/balanced-binary-tree/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "120",
+    "name" : "LCA in Binary Tree",
+    "url" : "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+    "cat" : "binaryTree"
+}
+,{
+    "qid" : "121",
+    "name" : "Check if two trees are identical or not",
+    "url" : "https://leetcode.com/problems/same-tree/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "122",
+    "name" : "Zig Zag Traversal of Binary Tree",
+    "url" : "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "123",
+    "name" : "Boundary Traversal of Binary Tree",
+    "url" : "https://leetcode.com/problems/boundary-of-binary-tree/#",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "124",
+    "name" : "Maximum path sum",
+    "url" : "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "125",
+    "name" : "Construct Binary Tree from inorder and preorder",
+    "url" : "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "126",
+    "name" : "Construct Binary Tree from Inorder and Postorder",
+    "url" : "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "127",
+    "name" : "Symmetric Binary Tree",
+    "url" : "https://leetcode.com/problems/symmetric-tree/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "128",
+    "name" : "Flatten Binary Tree to LinkedList",
+    "url" : "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "129",
+    "name" : "Check if Binary Tree is the mirror of itself or not",
+    "url" : "https://practice.geeksforgeeks.org/problems/mirror-tree/1",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "130",
+    "name" : "Check for Children Sum Property",
+    "url" : "https://bit.ly/33yExIQ",
+    "cat" : "binaryTree"
+}
+
+,{
+    "qid" : "131",
+    "name" : "Populate Next Right pointers of Tree",
+    "url" : "https://leetcode.com/problems/populating-next-right-pointers-in-each-node/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "132",
+    "name" : "Search given Key in BST",
+    "url" : "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "133",
+    "name" : "Construct BST from given keys",
+    "url" : "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "134",
+    "name" : "Construct BST from preorder traversal",
+    "url" : "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "135",
+    "name" : "Check is a BT is BST or not",
+    "url" : "https://leetcode.com/problems/validate-binary-search-tree/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "136",
+    "name" : "Find LCA of two nodes in BST",
+    "url" : "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+    "cat" : "binarySearchTree"
+}
+,{
+    "qid" : "137",
+    "name" : "Find the inorder predecessor/successor of a given Key in BST.",
+    "url" : "https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "138",
+    "name" : "Floor in a BST",
+    "url" : "https://www.codingninjas.com/codestudio/problems/floor-from-bst_920457?source=youtube&campaign=Striver_Tree_Videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=Striver_Tree_Videos",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "139",
+    "name" : "Ceil in a BST",
+    "url" : "https://bit.ly/33b9enW",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "140",
+    "name" : "Find K-th smallest element in BST",
+    "url" : "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "141",
+    "name" : "Find K-th largest element in BST",
+    "url" : "https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "142",
+    "name" : "Find a pair with a given sum in BST",
+    "url" : "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "143",
+    "name" : "BST iterator",
+    "url" : "https://leetcode.com/problems/binary-search-tree-iterator/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "144",
+    "name" : "Size of the largest BST in a Binary Tree",
+    "url" : "https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "145",
+    "name" : "Serialize and deserialize Binary Tree",
+    "url" : "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "146",
+    "name" : "Binary Tree to Double Linked List",
+    "url" : "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "147",
+    "name" : "Find median in a stream of running integers.",
+    "url" : "https://leetcode.com/problems/find-median-from-data-stream/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "148",
+    "name" : "K-th largest element in a stream.",
+    "url" : "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "149",
+    "name" : "Distinct numbers in Window.",
+    "url" : "https://www.interviewbit.com/problems/distinct-numbers-in-window/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "150",
+    "name" : "K-th largest element in an unsorted array.",
+    "url" : "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "151",
+    "name" : "Flood-fill Algorithm",
+    "url" : "https://leetcode.com/problems/flood-fill/",
+    "cat" : "binarySearchTree"
+}
+
+,{    "qid" : "152",
+    "name" : "Clone a graph (Not that easy as it looks)",
+    "url" : "https://leetcode.com/problems/clone-graph/",
+    "cat" : "binarySearchTree"
+}
+
+,{
+    "qid" : "153",
+    "name" : "DFS",
+    "url" : "https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1",
+    "cat" : "graph"
+}
+,{
+    "qid" : "154",
+    "name" : "BFS",
+    "url" : "https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "155",
+    "name" : "Detect A cycle in Undirected Graph using BFS",
+    "url" : "https://leetcode.com/problems/course-schedule/",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "156",
+    "name" : "Detect A cycle in Undirected Graph using DFS",
+    "url" : "https://leetcode.com/problems/course-schedule/",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "157",
+    "name" : "Detect A cycle in a Directed Graph using DFS",
+    "url" : "https://leetcode.com/problems/course-schedule/",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "158",
+    "name" : "Detect A cycle in a Directed Graph using BFS",
+    "url" : "https://leetcode.com/problems/course-schedule/",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "159",
+    "name" : "Topological Sort BFS",
+    "url" : "https://practice.geeksforgeeks.org/problems/topological-sort/1",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "160",
+    "name" : "Topological Sort DFS",
+    "url" : "https://practice.geeksforgeeks.org/problems/topological-sort/1",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "161",
+    "name" : "Number of islands(Do in Grid and Graph Both)",
+    "url" : "https://leetcode.com/problems/number-of-islands/",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "162",
+    "name" : "Bipartite Check using BFS",
+    "url" : "https://leetcode.com/problems/is-graph-bipartite/",
+    "cat" : "graph"
+}
+
+,{
+    "qid" : "163",
+    "name" : "Bipartite Check using DFS",
+    "url" : "https://leetcode.com/problems/is-graph-bipartite/",
+    "cat" : "graph"
+}
+,{
+    "qid" : "164",
+    "name" : "Max Product Subarray",
+    "url" : "https://leetcode.com/problems/maximum-product-subarray/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "165",
+    "name" : "Longest Increasing Subsequence",
+    "url" : "https://leetcode.com/problems/longest-increasing-subsequence/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "166",
+    "name" : "Longest Common Subsequence",
+    "url" : "https://leetcode.com/problems/longest-common-subsequence/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "167",
+    "name" : "0-1 Knapsack",
+    "url" : "https://leetcode.com/problems/ones-and-zeroes/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "168",
+    "name" : "Edit Distance",
+    "url" : "https://leetcode.com/problems/edit-distance/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "169",
+    "name" : "Maximum sum increasing subsequence",
+    "url" : "https://practice.geeksforgeeks.org/problems/maximum-sum-increasing-subsequence4749/1",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "170",
+    "name" : "Matrix Chain Multiplication",
+    "url" : "https://practice.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "171",
+    "name" : "Minimum sum path in the matrix, (count paths and similar type do, also backtrack to find the Minimum path)",
+    "url" : "https://leetcode.com/problems/minimum-path-sum/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "172",
+    "name" : "Coin change",
+    "url" : "https://leetcode.com/problems/coin-change/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "173",
+    "name" : "Subset Sum ",
+    "url" : "https://leetcode.com/problems/partition-equal-subset-sum/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "174",
+    "name" : "Rod Cutting",
+    "url" : "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "175",
+    "name" : "Egg Dropping",
+    "url" : "https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/1",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "176",
+    "name" : "Word Break",
+    "url" : "https://practice.geeksforgeeks.org/problems/word-break1352/1",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "177",
+    "name" : "Palindrome Partitioning (MCM Variation)",
+    "url" : "https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "178",
+    "name" : "Maximum profit in Job scheduling",
+    "url" : "https://practice.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1",
+    "cat" : "dp"
+}
+
+,{
+    "qid" : "179",
+    "name" : "Implement Trie (Prefix Tree)",
+    "url" : "https://leetcode.com/problems/implement-trie-prefix-tree/",
+    "cat" : "trie"
+}
+
+,{
+    "qid" : "180",
+    "name" : "Implement Trie – 2 (Prefix Tree)",
+    "url" : "https://bit.ly/3qwT4OL",
+    "cat" : "trie"
+}
+
+,{
+    "qid" : "181",
+    "name" : "Longest String with All Prefixes",
+    "url" : "https://bit.ly/3n3kedU",
+    "cat" : "trie"
+}
+
+,{
+    "qid" : "182",
+    "name" : "Number of Distinct Substrings in a String",
+    "url" : "https://bit.ly/3ocRQW0",
+    "cat" : "trie"
+}
+
+,{
+    "qid" : "183",
+    "name" : "Power Set (this is very important)",
+    "url" : "https://practice.geeksforgeeks.org/problems/power-set4302/1#",
+    "cat" : "trie"
+}
+
+,{
+    "qid" : "184",
+    "name" : "Maximum XOR of two numbers in an array",
+    "url" : "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/",
+    "cat" : "trie"
+}
+
+,{
+    "qid" : "185",
+    "name" : "Maximum XOR With an Element From Array",
+    "url" : "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/",
+    "cat" : "trie"
+}
+]

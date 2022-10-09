@@ -1,0 +1,158 @@
+<%- include('./partials/upper.ejs') %>
+<style>
+    .accountData{
+        display: flex;
+        margin-right: 30px;
+        flex-direction: column;
+        margin-left: 30px;
+    }
+    .accountData>div{
+        display: flex;
+        align-items: center;
+        border: 1px dashed black;
+        background-color: aliceblue;
+        margin: 5px;
+        padding-left: 10px;
+        height: 40px;
+    }
+    .accountData>div>span{
+        font-weight: 600;
+        margin-right: 20px;
+    }
+    .accountData>div>div{
+      margin-left: auto;
+      margin-right: 10px;
+    }
+    .accountData>div>div>input{
+        text-align: center;
+        width: 390px;
+    }
+    @media (max-width: 768px) {
+        .accountData>div>div>input{
+            width: 100px;
+        }
+    }
+
+        .switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 15px;
+    }
+
+    .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+
+    .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+
+    .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 20px;
+    left: 0px;
+    background-color: rgb(255, 255, 255);
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+
+    input:checked + .slider {
+    background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    }
+
+
+</style>
+    <h1 style="text-align: center; margin: 40px;">Account Data 💾</h1>
+    <a style="margin-left: 35px;" href="/striverSheet">back 👈</a>
+
+    <div class="accountData">
+        <div><span>Name:</span><%= name %> </div>
+        <div><span>Email:</span><%= email %></div>
+        <div><span>Public Account?</span><div> <label class="switch">
+            <input type="checkbox"  id="publicAccount" <% if(publicAccount){ %> checked  <%} %>>
+            <span class="slider"></span>
+          </label></div> </div>
+        <div><span>Portfolio:</span><% if(portfolio!='NA') { %> <a target="_blank" href="<%= portfolio %>">link </a>  <% } else {%> <%= portfolio %> <% } %><div><input id="portfolio" value="<%= portfolio %>"></div> </div>
+        <div><span>Country:</span><%= country %> <div><input id="country" value="<%= country %>"></div> </div>
+        <div><span>Company:</span><%= company %> <div><input id="company" value="<%= company %>"></div> </div>
+        <div><span>College:</span><%= college %> <div><input id="college" value="<%= college %>"></div> </div>
+        <div><span>Phone:</span><%= phone %> <div><input id="phone" value="<%= phone %>"></div> </div>
+    </div>
+    <br>
+    <center>
+    <button onclick="save()" class="btn btn-primary" style="width: 200px;">Save</button>
+    </center>
+    <br>
+
+    <script>
+        function toastMessage(message){
+                        return Toastify({
+                                        text:message,
+                                        duration: 3000,
+                                        // destination: "https://github.com/apvarun/toastify-js",
+                                        newWindow: true,
+                                        close: true,
+                                        gravity: "top", // `top` or `bottom`
+                                        position: "center", // `left`, `center` or `right`
+                                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                                        style: {
+                                            background:"linear-gradient(to right, #00b09b, #96c93d)",
+                                        },
+                                        onClick: function(){} // Callback after click
+                                        }).showToast();
+                    }
+        async function save()
+        {
+            let country=document.getElementById('country').value.trim()
+            let company=document.getElementById('company').value.trim()
+            let college=document.getElementById('college').value.trim()
+            let phone=document.getElementById('phone').value.trim()
+            let portfolio=document.getElementById('portfolio').value.trim()
+            let publicAccount=document.getElementById('publicAccount').checked
+
+            if(country=="" || company =="" || college=="" || phone=="" || portfolio=="")
+            return toastMessage("Input fields can not be empty!")
+            try{
+
+                let data=await fetch('saveAcademicData',{
+                    method:'POST',
+                    body:JSON.stringify({country,company,college,phone,portfolio,publicAccount}),
+                    headers:{"Content-Type":"application/json"}
+                })
+
+                let res=await data.json()
+                if(res.error)
+                return toastMessage(res.error)
+                else return toastMessage(res.success)
+            }
+            catch(e)
+            {
+               alert(e)
+
+            }
+        }
+    </script>
+<%- include('./partials/lower.ejs') %>

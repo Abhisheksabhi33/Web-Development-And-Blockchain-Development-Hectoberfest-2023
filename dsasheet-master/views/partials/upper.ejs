@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="f.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Grape+Nuts&family=Indie+Flower&family=Monoton&family=Press+Start+2P&family=Quicksand:wght@300&family=Slackey&family=Special+Elite&family=Tourney:wght@100&family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <title><%= pageTitle %></title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Sora', sans-serif;
+      }
+      html{
+        height: 100%;
+      }
+      /* questions */
+    .individualQuestionsContainer::-webkit-scrollbar-track
+    {
+      border: 1px solid black;
+      background-color: #F5F5F5;
+    }
+
+    .individualQuestionsContainer::-webkit-scrollbar
+    {
+      width: 8px;
+      background-color: #F5F5F5;
+    }
+
+    .individualQuestionsContainer::-webkit-scrollbar-thumb
+    {
+      background-color: #555151;	
+    }
+
+    /* status bar */
+    .statusBar::-webkit-scrollbar-track
+    {
+      border: 1px solid black;
+      background-color: #F5F5F5;
+    }
+
+    .statusBar::-webkit-scrollbar
+    {
+      width: 5px;
+      background-color: #F5F5F5;
+    }
+
+    .statusBar::-webkit-scrollbar-thumb
+    {
+      background-color: #555151;	
+    }
+
+    
+    /* body  */
+    body::-webkit-scrollbar-track
+    {
+      border: 1px solid black;
+      background-color: #F5F5F5;
+    }
+
+    body::-webkit-scrollbar
+    {
+      width: 10px;
+      background-color: #F5F5F5;
+    }
+
+    body::-webkit-scrollbar-thumb
+    {
+      background-color: #555151;	
+    }
+    body{
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+
+      background: #000000;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to top, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to top, #969494c2, #f7e4e4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+    }
+
+    footer {
+      padding: 3px;
+      background-color:  rgb(52 58 64);
+      color: white;
+      margin-top: auto;
+     
+    }
+    a{
+      cursor: pointer;
+    }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJXDJ5RXNT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RJXDJ5RXNT');
+    </script>
+  </head>
+  <body style="background-color: white;" >
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark myNav" >
+            <a class="navbar-brand" href="/">Focussed</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                  <!-- <a class="nav-link" href="/">All Tracks🔥</a> -->
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: transparent;" >
+                      All Tracks 🔥
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" onclick="location.href='/striverSheet'"  >Striver's DSA Sheet</a>
+                      <a class="dropdown-item" onclick="toastMessage('Coming soon!')">C++ Interview Questions</a>
+                      <a class="dropdown-item" onclick="toastMessage('Coming soon!')">Computer Networks</a>
+                      <a class="dropdown-item" onclick="location.href='/os'">Operating Systems</a>
+                      <a class="dropdown-item" onclick="location.href='/graph'">Graph Theory Algorithms</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="/about">About Us📃 </a>
+                </li>
+              
+              </ul>
+              <% if(typeof user!='undefined' && user) {%>
+              
+                <a href="/account"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Your account💾</button></a>
+              
+              &nbsp;&nbsp;
+              <a href="/logout"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout🥺</button></a>
+
+              <% } else{ %>
+              <a href="/login"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Login😊</button></a>&nbsp;&nbsp;
+              <a href="/signup"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Signup😇</button></a>
+              <% } %>
+            </div>
+          </nav>
+
+     <script>
+       <%- include('./toastMessage') %>
+     </script>

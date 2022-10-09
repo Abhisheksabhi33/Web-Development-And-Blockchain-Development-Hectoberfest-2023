@@ -1,0 +1,39 @@
+<%- include('./partials/upper.ejs') %>
+<style> 
+.likeQuestionsContainer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.likeQuestionsContainer>div{
+    margin: 5px;
+    border: 1px dashed black;
+    background-color: aliceblue;
+    padding: 5px;
+}
+.likeQuestionsContainer>div{
+    display: flex;
+}
+</style>
+
+    <% if(allLikedQuestions.length!=0) {%>
+        <h1 style="text-align: center; margin-top: 40px;">You have liked 💖 <%= allLikedQuestions.length %> questions, they are </h1>
+        <a style="margin-left: 55px;" href="/striverSheet">back 👈</a>
+
+        <div class="likeQuestionsContainer">
+        
+                <% for(let i=0;i<allLikedQuestions.length;++i) { %>
+
+                    <div><%= allLikedQuestions[i].name %>,&nbsp;&nbsp; <a href="<%= allLikedQuestions[i].url %>">practice</a> <span style="margin-left: auto; color: navy;"><%= allLikedQuestions[i].cat %></span> </div>
+                <% } %>
+        
+
+        </div>
+    <% } else { %>
+         <h1 style="text-align: center; margin-top: 40px;">You have not liked any question.</h1>
+         <a style="margin-left: 55px;" href="/striverSheet">back</a>
+    <% } %>
+   <br><br>
+
+<%- include('./partials/lower.ejs') %>

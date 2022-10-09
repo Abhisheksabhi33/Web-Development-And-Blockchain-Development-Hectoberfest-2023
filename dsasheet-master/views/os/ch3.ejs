@@ -1,0 +1,658 @@
+<%- include('./osPartials/templateStart') %>
+
+<h1 style=" text-align:center; font-size: 40px;font-weight: 900;">Processes</h1><hr>
+
+<p>
+   <b>CHAPTER OBJECTIVES</b> <br>
+• To introduce the notion of a process—a program in execution, which forms
+the basis of all computation.
+<br>
+• To describe the various features of processes, including scheduling,
+creation, and termination.
+<br>
+• To explore interprocess communication using shared memory and message passing.
+<br>
+• To describe communication in client – server systems.
+
+<br><hr>
+<h3 id="theProcess"><u> <b>The Process </b></u></h3>
+<b>Process</b> is a program in execution. <br>
+A Process is an <b>active</b> entity, where as a program is a <b>passive</b> entity.<br><br>
+
+<h4>Structure of a process</h4>
+A process contains following parts:
+<ol>
+    <li>Text Section</li>
+    <li>Stack (contains temporary data such as function parameters, local variables, return addresses)</li>
+    <li>Data Section (contains global variables)</li>
+    <li>Heap (Memory that is dynamically allocated during run time)</li>
+</ol>
+<img src="https://lh3.googleusercontent.com/d/1zO4yj_8DYO_KUhC6ZzHzGka3Tn-3FMAg"> <br>Fig: A process in memory.
+<br><br>
+A process has a program counter specifying the next instruction to execute and a set of associated resources. A program becomes a process when an executable file is loaded into memory. Two common techniques for loading executable files are double-clicking an icon representing the executable file and entering the
+name of the executable file on the command line (as in prog.exe or a.out).
+<br><br>
+<h4>Process State</h4>
+As a process executes, it changes state. The state of a process is defined in part
+by the current activity of that process. A process may be in one of the following
+states:
+<ol>
+   <li><b>New</b>. The process is being created.</li>
+   <li><b>Running</b>. Instructions are begin executed.</li>
+   <li><b>Waiting</b>. The process is waiting for some event to occur(such as an i/o completion or reception of a signal).</li>
+   <li><b>Ready</b>. The process is waiting to be assigned to a process.</li>
+   <li><b>Terminated</b>. The process has finished execution.</li>
+</ol>
+<br>
+<img src="https://lh3.googleusercontent.com/d/1ulTzyYHuOAASPiY7VaqTbeWU6ikftrul"><br>
+Fig. Process state diagram
+<br><br>
+
+<h4>Process Control Block</h4>
+Each process in the operation system is represented by a <b>process control block (PCB)</b> - also called a task control black.
+
+<br><br>
+<b>A Process Control Block or simple PCB is a data structure that is used to store the information of a process that might be needed to manage the scheduling of a particular process.</b>
+<br><br>
+So, each process will be given a PCB which is a kind of identification card for a process. All the processes present in the system will have a PCB associated with it and all these PCBs are connected in a Linked List.
+<br><br>
+Attributes of a Process Control Block
+<br><br>
+There are various attributes of a PCB that helps the CPU to execute a particular process. These attributes are:
+<ol>
+    <li>
+<b>Process Id: </b>A process id is a unique identity of a process. Each process is identified with the help of the process id.
+Program Counter: The program counter, points to the next instruction that is to be executed by the CPU. It is used to find the next instruction that is to be executed.</li>
+<li>
+<b>Process State:</b> A process can be in any state out of the possible states of a process. So, the CPU needs to know about the current state of a process, so that its execution can be done easily. You can learn more about process state from here.
+</li>
+<li>
+<b>Priority:</b> There is a priority associated with each process. Based on that priority the CPU finds which process is to be executed first. Higher priority process will be executed first.
+</li>
+<li>
+<b>General-purpose Registers:</b> During the execution of a process, it deals with a number of data that are being used and changed by the process. But in most of the cases, we have to stop the execution of a process to start another process and after some times, the previous process should be resumed once again. Since the previous process was dealing with some data and had changed the data so when the process resumes then it should use that data only. These data are stored in some kind of storage units called registers.
+</li>
+<li>
+<b>CPU Scheduling Information:</b> It indicates the information about the process scheduling algorithms that are being used by the CPU for the process.
+List of opened files: A process can deal with a number of files, so the CPU should maintain a list of files that are being opened by a process to make sure that no other process can open the file at the same time.
+
+</li>
+<li>
+<b>List of I/O devices:</b> A process may need a number of I/O devices to perform various tasks. So, a proper list should be maintained that shows which I/O device is being used by which process.
+</li>
+</ol>
+<h4>Thread</h4>
+The process model discussed so far has implied that a process is a program that performs a single <b>thread</b> of execution. For example, when a process is running a word-processor program, a single thread of instructions is being executed.
+This single thread of control allows the process to perform only one task at
+a time. The user cannot simultaneously type in characters and run the spell
+checker within the same process, for example. Most modern operating systems
+have extended the process concept to allow a process to have multiple threads
+of execution and thus to perform more than one task at a time. This feature
+is especially beneficial on multicore systems, where multiple threads can run
+in parallel. On a system that supports threads, the PCB is expanded to include
+information for each thread. Other changes throughout the system are also
+needed to support threads. Chapter 4 explores threads in detail.
+
+<br><br>
+<h3 id="processScheduling"><u><b>Process Scheduling</b></u></h3>
+
+The process scheduling is the activity of the process manager that handles the removal of the running process from the CPU and the selection of another process on the basis of a particular strategy.
+<br>
+Process scheduling is an essential part of a Multiprogramming operating systems. Such operating systems allow more than one process to be loaded into the executable memory at a time and the loaded process shares the CPU using time multiplexing.<br>
+<b>Process scheduler</b> selects among available processes in the ready queue for next execution on CPU.
+
+<br><br>
+<h4>Process Scheduling Queues</h4>
+The OS maintains all PCBs in Process Scheduling Queues. The OS maintains a separate queue for each of the process states and PCBs of all processes in the same execution state are placed in the same queue. When the state of a process is changed, its PCB is unlinked from its current queue and moved to its new state queue.
+
+<br>The Operating System maintains the following important process scheduling queues −
+<ul>
+    <li><b>Job queue</b>: This queue keeps all the processes in the system.</li>
+    <li><b>Ready queue</b>. This queue keeps a set of all processes residing in main memory, ready and waiting to execute. A new process is always put in this queue.</li>
+    <li><b>Device queue</b>: The processes which are blocked due to unavailiblity of an I/O device constitue to this queue.</li>
+
+    <br>
+    <img src="https://lh3.googleusercontent.com/d/1MLOTDXfADjS8nSu6Nr4td-75jG4SyqTB"><br>
+    The OS can use different policies to manage each queue (FIFO, Round Robin, Priority, etc.). The OS scheduler determines how to move processes between the ready and run queues which can only have one entry per processor core on the system; in the above diagram, it has been merged with the CPU.
+</ul>
+
+<br>
+<h4>Schedulers</h4>
+Schedulers are special system software which handle process scheduling in various ways. Their main task is to select the jobs to be submitted into the system and to decide which process to run.
+<br>
+<br>There are three types of schedulers:
+<br><ol><li><b>Short term scheduler (CPU scheduler)</b></li>
+<li><b>Long term scheduler (Job scheduler)</b></li>
+<li><b>Medium term scheduler</b></li>
+</ol>
+<br>A process can be categorized in two types: <br>
+<ol>
+    <li><b>I/O Bound Process</b>: Those processes that spends more of its time doing I/O than it spends computations.</li>
+    <li><b>CPU Bound Process</b>: Those processes that generates I/O requests very frequently but takes more time in doing computations.</li>
+</ol>
+<br>
+<h5>Long term scheduler ( Job scheduler )</h5>
+Long-Term schedulers are those schedulers whose decision will have a long-term effect on the performance. The duty of the long-term scheduler is to bring the process from the JOB pool to the Ready state for its execution.
+<br><br>
+<b>
+Long-Term Scheduler is also called Job Scheduler and is responsible for controlling the Degree of Multiprogramming i.e. the total number of processes that are present in the ready state.</b><br><br>
+So, the long-term scheduler decides which process is to be created to put into the ready state.
+<br><br>
+Effect on performance
+<ol>
+    <li>The long term scheduler is responsible for creating a balance between the I/O bound(a process is said to be I/O bound if the majority of the time is spent on the I/O operation) and CPU bound(a process is said to be CPU bound if the majority of the time is spent on the CPU). So, if we create processes which are all I/O bound then the CPU might not be used and it will remain idle for most of the time. This is because the majority of the time will be spent on the I/O operation.</li>
+    <li>So, if we create processes that are having high a CPU bound or a perfect balance between the I/O and CPU bound, then the overall performance of the system will be increased.
+    </li>
+</ol>
+<br><br>
+<h5>Short term scheduler ( CPU scheduler )</h5>
+
+Short-term schedulers are those schedulers whose decision will have a short-term effect on the performance of the system. The duty of the short-term scheduler is to schedule the process from the ready state to the running state. This is the place where all the scheduling algorithms are used i.e. it can be FCFS or Round-Robin or SJF or any other scheduling algorithm.
+<br><br>
+<b>Short-Term Scheduler is also known as CPU scheduler and is responsible for selecting one process from the ready state for scheduling it on the running state.</b><br><br>
+Effect on performance
+<ul>
+    <li>The choice of the short-term scheduler is very important for the performance of the system. If the short-term scheduler only selects a process that is having very high burst time(learn more about burst time from here) then the other process may go into the condition of starvation(learn more about starvation from here). So, be specific when you are choosing short-term scheduler because the performance of the system is our highest priority.</li>
+</ul>
+<br>
+The following image shows the scheduling of processes using the long-term and short-term schedulers.<br><br>
+<img src="https://lh3.googleusercontent.com/d/1B7BtYaeIud7UkhjOPFlydFRxov8FxJ8W">
+<br><br>
+<h5>Medium term scheduler</h5>
+Sometimes, you need to send the running process to the ready state or to the wait/block state. For example, in the round-robin process, after a fixed time quantum, the process is again sent to the ready state from the running state. So, these things are done with the help of Medium-Term schedulers.
+
+<br><br>
+<b>Medium-term schedulers are those schedulers whose decision will have a mid-term effect on the performance of the system. It is responsible for swapping of a process from the Main Memory to Secondary Memory and vice-versa.</b>
+<br><br>
+It is helpful in maintaining a perfect balance between the I/O bound and the CPU bound. It reduces the degree of multiprogramming.
+<br>
+The following diagram will give a brief about the working of the medium-term schedulers.
+<br><br>
+<img src="https://lh3.googleusercontent.com/d/1cII6xgXOfKXB7in5uaFh-6jh5gmIXAM6">
+<br><br>
+<img src="https://lh3.googleusercontent.com/d/1dq_Ji0Sc7K9M9Fs95uGcxxnxrn6Fffkg">
+</p>
+
+
+<br><br>
+<h4>Context switching</h4>
+In the Operating System, there are cases when you have to bring back the process that is in the running state to some other state like ready state or wait/block state. If the running process wants to perform some I/O operation, then you have to remove the process from the running state and then put the process in the I/O queue. Sometimes, the process might be using a round-robin scheduling algorithm where after every fixed time quantum, the process has to come back to the ready state from the running state. So, these process switchings are done with the help of Context Switching.
+<br><br>
+A context switching is a process that involves switching of the CPU from one process or task to another. In this phenomenon, the execution of the process that is present in the running state is suspended by the kernel and another process that is present in the ready state is executed by the CPU.
+<br><br>
+It is one of the essential features of the multitasking operating system. The processes are switched so fastly that it gives an illusion to the user that all the processes are being executed at the same time.
+<br><br>
+But the context switching process involved a number of steps that need to be followed. You can't directly switch a process from the running state to the ready state. You have to save the context of that process. If you are not saving the context of any process P then after some time, when the process P comes in the CPU for execution again, then the process will start executing from starting. But in reality, it should continue from that point where it left the CPU in its previous execution. So, the context of the process should be saved before putting any other process in the running state.
+<br><br>
+A context is the contents of a CPU's registers and program counter at any point in time. Context switching can happen due to the following reasons:
+<br><br>
+<ul>
+    <li>When a process of high priority comes in the ready state. In this case, the execution of the running process should be stopped and the higher priority process should be given the CPU for execution.</li>
+    <li>When an interruption occurs then the process in the running state should be stopped and the CPU should handle the interrupt before doing something else.</li>
+    <li>When a transition between the user mode and kernel mode is required then you have to perform the context switching.</li>
+</ul>
+<br><br>
+<b>Advantage of Context Switching</b><br>
+Context switching is used to achieve multitasking i.e. multiprogramming with time-sharing(learn more about multitasking from here). Multitasking gives an illusion to the users that more than one process are being executed at the same time. But in reality, only one task is being executed at a particular instant of time by a processor. Here, the context switching is so fast that the user feels that the CPU is executing more than one task at the same time.
+<br><br>
+<b>Disadvantage of Context Switching</b><br>
+The disadvantage of context switching is that it requires some time for context switching i.e. the context switching time. Time is required to save the context of one process that is in the running state and then getting the context of another process that is about to come in the running state. During that time, there is no useful work done by the CPU from the user perspective. So, context switching is pure overhead in this condition.
+<br><br>
+Context switches are computationally intensive since register and memory state must be saved and restored. To avoid the amount of context switching time, some hardware systems employ two or more sets of processor registers. When the process is switched, the following information is stored for later use.
+<ul>
+    <li>Program counter</li>
+    <li>Scheduling information</li>
+    <li>Base and limit register value</li>
+    <li>Currently used register</li>
+    <li>Changed state</li>
+    <li>I/O state information</li>
+    <li>Accounting information</li>
+</ul>
+<br>
+<h3 id="operationsOnProcess"><u><b>Operations on Processes</b></u></h3>
+The processes in most systems can execute concurrently, and they may be created and deleted dynamically. Thus, systems must provide a mechanism for process <b>creation</b> and <b>termination</b>. 
+<br>
+<br>
+<h4>Process Creation</h4>
+
+During the course of execution, a process may create several new processes.The creating process is called a parent process, and the new
+processes are called the children of that process. Each of these new processes
+may in turn create other processes, forming a <b>tree</b> of processes.
+<br>
+Each process is assigned a unique id known as <b>process id (PID).</b> It is an integer number. The pid provides a unique value for each process in the system, and it can used as an index to access various attributes of a process within a kernel.
+<br>
+<ul>
+    <li>A process may create other processes.</li>
+    <li>A parent process creates children process, which in turn, create other processes, forming a tree of process.</li>
+    <li>Generally, a process is identified and managed via a process identifier(pid).</li>
+</ul>
+<br>
+<img src="https://lh3.googleusercontent.com/d/17BgP4Bv6dnU_BjMX6tpkctLwRc3clURX">
+<br>
+Fig. Process tree in Linux.
+<br><br>
+When a process creates a child process, then that child process will need certain resources like CPU time, memory, files, I/O devices, to accomplish its task. A child process may be able to obtain its resources directly from the operating system, or it may get subset of resources of the parent resource. The parent may have to partition its resources among
+its children, or it may be able to share some resources (such as memory or
+files) among several of its children. Restricting a child process to a subset of
+the parent’s resources prevents any process from overloading the system by
+creating too many child processes.
+<br><br>
+When a process creates a new process, two possiblities for execution exists:
+<ol>
+    <li> The parent continues to execute concurrently with its children.</li>
+    <li> The parent waits until some or all of its children have terminated.</li>
+</ol>
+<br>
+
+There are also two address-space possibilities for the new process:
+<ol>
+    <li> The child process is a duplicate of the parent process (it has the same
+        program and data as the parent).</li>
+    <li> The child process has a new program loaded into it</li>
+</ol>
+
+<br><br>
+<h4>The fork() system call</h4>
+<b>fork()</b>: The fork() system call is used to create a seperate, duplicate process.
+<br>If we are using a fork() system call then a seperate, duplicated process which will be exactly the same like the procecss from which it was called will be created, but the only difference is that the new process will have a different process id. So, the process from which we call the fork is known as the parent process and the duplicate process that is created is known as child process.
+<br><br>
+<b>return type</b>: fork() returns 0 to the child process and returns the process ID of the child process to the parent process. Otherwise, -1 is returned to the parent process when no child process is created.
+<br><br>
+
+
+<b>exec()</b>: When an exec() system call is invoked, the program specified in the parameter to exec() will replace the entire process including all threads. ie. process id will remain same but all the contents will be different. 
+<br><br>
+<i>Demonstration in Linux</i><br>
+    
+   <img src="https://lh3.googleusercontent.com/d/1pRm5YKJOkRK_7KxyxtGmV5Tk5yUX0Tja">
+   <br>The above program will print the process id of the process that will print "Hello world!" on the console.
+   <br><i>Output</i>: <pre style="background:gray;color: white;">Hello world!<br> PID=3423</pre>
+   <br><br>
+   <img src="https://lh3.googleusercontent.com/d/1qbmmi2-RARC8Xl-vMUznkSsqjCfK4Wfw">
+   <br>The above program will print the process id of the process that that will print "Hello world!" on the console, then the fork() system call will clone the current process have same contents but different process id.
+   <br>
+   <i>Output</i>: <pre style="background:gray;color: white;">Hello world!<br> PID=3423<br>Hello world!<br> PID=3424</pre>
+    <br>
+    <b><i>Can you guess how many times will "Hello world!" printed after the execution of the following program?</i></b>
+    <br><br>
+    <img src="https://lh3.googleusercontent.com/d/1GTxyazeO4sLP9KL6hSqG7ekwMVnGnxNU">
+    <br><i>Output</i>: <pre style="background:gray;color: white;"><br>Hello world!<br> PID=3423<br>Hello world!<br> PID=4423<br>Hello world!<br> PID=3413<br>Hello world!<br> PID=3923<br>Hello world!<br> PID=3463<br>Hello world!<br> PID=3428<br>Hello world!<br> PID=3723<br>Hello world!<br> PID=3023</pre>
+    
+    <br>"Hello world!" is printed eight times.<br>
+    <img src="https://lh3.googleusercontent.com/d/1YOZgjrQOnr45dJYD9h-1QH4MxfHH0tOv">
+    <br>
+    <br>
+    <i><b style="background-color: yellow;">The number of times a program will execute = 2<sup>n</sup>, where n=number of fork() system calls in the program.</b></i><br><br>
+    <a title="useful link" href="http://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/fork/create.html">fork() and memory shared b/w processes created using it.</a>
+    <br>
+    <a title="useful link" href="https://www.geeksforgeeks.org/fork-system-call/">fork() system call gfg</a>
+    <br><br>
+    <center><iframe class="youtubeVid" width="654" height="409" src="https://www.youtube.com/embed/nwm7rJG90i8" title="Fork and Exec in Linux" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+    <br><br>
+    <h4>Process Termination</h4>
+    A process terminates when it finishes executing its final statement
+and it asks the operating system to delete it by using the exit()
+system call. At that point, the process may return a status value (typically an integer) to its parent process(via the wait() system call). All the resources of the process are deallocated by the operating system.
+
+<br><br>
+Child process may terminate due to any of these:
+<ul>
+    <li>I calls exit()</li>
+    <li>It returns(an int) from main()</li>
+    <li>It receives a signal(from the OS or another process) whose default action it to terminate.</li>
+</ul>
+<br>
+A parent may terminate the execution of children processes using abort() system call. Some reasons to do so:<br>
+<ul>
+    <li>child has exceeded allocated resources.</li>
+    <li>Task assigned to child is no longer required.</li>
+    <li>The parent is exiting and the operating system does not allow a child to continue if its parents terminates.</li>
+</ul>
+
+Some operating systems do not allow a child process to exist if its parent has terminated. If a process terminates, then all its children must also be terminated.
+<ul>
+    <li><b>Cascading termination</b>:If a process terminates (either normally or abnormally), then
+        all its children must also be terminated.</li>
+    <li>The termination is initiated by the operating system.</li>
+</ul>
+<br>
+A parent process may wait for the termination of a child process by using
+the wait() system call. The wait() system call is passed a parameter that
+allows the parent to obtain the exit status of the child. This system call also
+returns the process identifier of the terminated child so that the parent can tell
+which of its children has terminated:
+<pre style="background:gray;color: white;">
+    pid_t pid;
+    int status;
+    pid = wait(&status);
+</pre>
+<br>
+When a process terminates, its resources are deallocated by the operating
+system. However, its entry in the process table must remain there until the
+parent calls wait(), because the process-table contains the process’s exit status. Hence it is very important to call wait() by the parent before terminating so that the child's entry is freed from the process-table.
+
+<br><br>
+<b>Zombie Process</b>: A process that has terminated, but whose parent has not yet called wait(), is
+known as a zombie process. Once the parent
+calls wait(), the process identifier of the zombie process and its entry in the
+process table are released.
+<br><br>
+
+<b>Orphan Process</b>: A process whose parent has terminated without calling wait(), these type of child processes are called orphan processes.
+<br><br>
+<a title="useful link" href="https://www.geeksforgeeks.org/wait-system-call-c/">The wait() system call</a>
+<br><br>
+<h3 id="interprocessCommunication"><u><b>Interprocess Communication</b></u></h3>
+Processes executing concurrently in the operating system may be either independent or cooperating. 
+<br><br>
+<b>Independent Process</b>: A process is independent if it cannot affect or be affected by the other processes executing in the system. Any process that does not share data with any other process is independent.
+<br><br>
+<b>Cooperating Process</b>: A process is cooperating if it can affect or be affected by the other processes executing in the system. Clearly any process that shares data with other processes is a cooperating process.
+
+<br><br>
+<h4 >Need of interprocess communication</h4>
+<ul>
+    <li><b>Information sharing.</b>Since several users may be interested in the same
+        piece of information (for instance, a shared file), we must provide an
+        environment to allow concurrent access to such information.</li>
+    <li><b>Computation speedup.</b>If we want a particular task to run faster, we must
+        break it into subtasks, each of which will be executing in parallel with the
+        others. Notice that such a speedup can be achieved only if the computer
+        has multiple processing cores.</li>
+    <li><b>Modularity.</b>We may want to construct the system in a modular fashion,
+        dividing the system functions into separate processes or threads.</li>
+    <li><b>Convenience.</b>Even an individual user may work on many tasks at the
+        same time. For instance, a user may be editing, listening to music, and
+        compiling in parallel.</li>
+</ul>
+Cooperating processes require an interprocess communication (IPC) mechanism that will allow them to exchange data and information.
+<br><br>There are two models for interprocess communication:
+<ol>
+    <li>Shared memory</li>
+    <li>Message passing</li>
+</ol>
+<img src="https://lh3.googleusercontent.com/d/1udCJMWPCKpdKDhkoVVbvPU-YK41Dl4ww">
+<br><br>
+<h4>Shared Memory Systems</h4>
+Interprocess Communication using shared memory requires communcating processes to establish a region of shared memory.
+<br>
+In the Shared Memory system, the cooperating processes communicate, to exchange the data with each other. Because of this, the cooperating processes establish a shared region in their memory. The processes share data by reading and writing the data in the shared segment of the processes.
+<br><br>
+<b>Advantages</b>
+<ul>
+    <li>shared memory is a faster IPC system.</li>
+    <li>It allows cooperating processes to access the same data concurrently.</li>
+    <li>It speeds up the computation power of the system and divides long tasks into smaller sub-tasks and can be executed in parallel.</li>
+    <li>Modularity is achieved in a shared memory system.</li>
+    <li>Users can perform multiple tasks at a time.</li>
+
+</ul>
+Cooperating processes that access shared data need to <b>synchronize</b>
+their actions to ensure data consistency. Maintaining data consistency requires mechanisms to ensure the
+orderly execution of cooperating processes. 
+<br><br>
+<b>The producer-consumer problem</b>: Produces process produces information that is consumed by a consumer process.
+The information is passed from the produces to the consumer via a buffer.
+<br>
+Two types of buffers can be used:
+<ol>
+    <li>Unbounded-buffer places no practical limit on the size of the buffer.</li>
+    <li>Bounded-buffer assumes that a fixed buffer size.</li>
+</ol>
+<br>
+<h4>Message Passing Systems</h4>
+Message passing provides a mechanism to allow processes to communicate
+and to synchronize their actions without sharing the same address space. It is
+particularly useful in a distributed environment, where the communicating
+processes may reside on different computers connected by a network.
+
+<br>
+A message passing facilty provides atleast two operations:
+<ol>
+    <li>send(message)</li>
+    <li>receive(message)</li>
+</ol>
+Messages sent by a process can be of either <b>fixed</b> or <b>variable size</b>. 
+<ul>
+    <li> <b>Fixed size</b>: The system-level implementation is straightforward. But makes the task of programming more difficult.</li>
+    <li><b>Variable size</b>: Requires a more complex system-level implementation. But the programming task becomes simpler.</li>
+</ul>
+<br>
+If processes P and Q wish to communicate, they need to:
+<ul>
+    <li>establish a <b>communication link</b> between them.</li>
+    <li>exchange messages via send/receive.</li>
+</ul>
+
+Implementation issues:
+<ul>
+    <li>how are links established?</li>
+    <li>can a link be associated with more than two processes?</li>
+    <li>how many links can be there between every pair of communicating processes?</li>
+    <li>what is the capacity of a link?</li>
+    <li>is the size of a message that the link can accomodate fixed or variable?</li>
+    <li>is a link unidirectional or bi-direcitional?</li>
+</ul>
+
+Implementation of communication link:
+<ul>
+    <li><b>Physical</b>
+        <ul>
+            <li>Shared memory</li>
+            <li>Hardware bus</li>
+            <li>Network</li>
+        </ul>
+    </li>
+    <li>
+        <b>Logical</b>
+        <ul>
+            <li>Direct or indirect</li>
+            <li>Synchronous or asynchronous</li>
+            <li>Automatic or explicit buffering</li>
+        </ul>
+    </li>
+</ul>
+<h4>Direct Communication</h4>
+<ol>
+    <li>
+        Processes must name each other explicitly:
+        <ul>
+            <li><b>send(p,message)</b> - send a message to process p</li>
+            <li><b>receive(q,message)</b> - receive a message from process q</li>
+        </ul>
+    </li>
+    <li>
+        Properties of communication link:
+        <ul>
+            <li>Links are established automatically.</li>
+            <li>A link is associated with exactly one pair of communicating process.</li>
+            <li>Between each pair there exist one link.</li>
+            <li>The link may be unidirectional, but is usually bi-directional.</li>
+        </ul>
+    </li>
+</ol>
+
+<h4>Indirect Communication</h4>
+<ol>
+    <li>
+        Messages are directed and received from mailboxes (also referred to as ports)
+        <ul>
+            <li>Each mailbox has an unique id.</li>
+            <li>Processes can communicate only if they share a mailbox.</li>
+        </ul>
+    </li>
+    <li>
+        Operations
+        <ul>
+            <li>Create a new mailbox(port)</li>
+            <li>send and receive messages through mailbox</li>
+            <li>delete mailbox</li>
+        </ul>
+    </li>
+    <li>
+        Primitives are defined as:
+        <ul>
+            <li><b>send(A,message)</b> - send a message to mailbox A</li>
+            <li><b>receive(A,message)</b> - receive a message from mailbox A</li>
+        </ul>
+    </li>
+    <li>
+        Properties of communication link 
+        <ul>
+            <li>Link is established only if processes share a common mailbox</li>
+            <li>A link may be associated with many processes</li>
+            <li>Each pair of processes may share several communication links</li>
+            <li>Link may be unidirectional or bi-directional</li>
+        </ul>
+    </li>
+</ol>
+
+<h4>Indirect Communication Issues</h4>
+<ol>
+    <li>
+        Mailbox sharing 
+        <ul>
+            <li>P1, P2 and P3 share mailbox A</li>
+            <li>P1 sends; P2 and P3 receive</li>
+            <li>Who gets the message?</li>
+        </ul>
+    </li>
+    <li>
+        Solutions
+        <ul>
+            <li>Allow a link to be associated with at most two processes</li>
+            <li>Allow only one process at a time to execute a receive operation </li>
+            <li>Allow the system to select arbitrarily the receiver. Sender is notified who the receiver was.</li>
+        </ul>
+    </li>
+</ol>
+
+<h4>Blocking and Non-blocking Schemes</h4>
+<ul>
+    <li>
+        Message passing may be either blocking or non-blocking.
+    </li>
+    <li><b>Blocking</b> is considered <b>synchronous</b>
+        <ul>
+            <li>Blocking send - the sender is blocked until the message is received</li>
+            <li>Blocking receive - the receive is blocked until a message is available</li>
+        </ul>
+    </li>
+    <li>
+        Non-blocking is considered asynchronous
+        <ul>
+            <li>
+                Non-blocking send - the sender sends the message and continue 
+            </li>
+            <li>
+                Non-blocking receive - the receiver receives a valid message or NULL message.
+            </li>
+        </ul>
+    </li>
+
+</ul>
+
+<h3><b><u>Pipes</u></b></h3>
+A pipe acts as a conduit allowing two processes to communicate.
+
+<br><br>
+Four issues must be considered while implementing a pipe:
+<ol>
+    <li>Unidirectional or Bidirectional communication?</li>
+    <li>Is bidirectional communication half-duplex or full-duplex?</li>
+    <li>Must a relationship such as parent-child exist between the processes?</li>
+    <li>Can pipes communicate over a network, or only on the same machine?</li>
+</ol>
+
+There are two types of pipes:
+<br><br>
+<h4>Ordinary Pipes</h4>
+<ul>
+    <li>Ordinary pipes allow two processes to communicate in standard producer-consumer style.</li>
+    <li>Producer writes to one end (the write‐end of the pipe)</li>
+    <li>Consumer reads from the other end (the read‐end of the
+        pipe)</li>
+    <li>Ordinary pipes are unidirectional, allowing only one‐way
+        communication.</li>
+    <li>If two‐way communication is required, two pipes must be
+        used, with each pipe sending data in a different direction.</li>
+    <li>Require parent‐child relationship between communicating
+        processes</li>
+
+</ul>
+
+     On UNIX systems, ordinary pipes are constructed using the function: pipe(int fd[])
+        <br>
+        This function creates a pipe that is accessed through the int fd[] file descriptors:
+        <br>
+        fd[0] is the read-end of the pipe<br>
+        fd[1] is the write-end of the pipe<br>
+        UNIX treats a pipe as a special type of file. Thus, pipes can be accessed using ordinary read() and write() system calls.
+        <br><br>
+        <img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter3/3_22_PipeFileDescriptors.jpg">
+
+<br><br><a href="https://www.geeksforgeeks.org/pipe-system-call/">Pipes gfg</a>
+
+
+<br><br>
+<h4>Named Pipes</h4>
+<ul>
+    <li>Named pipes are more powerful than ordinary pipes</li>
+    <li>Communication is bidirectional</li>
+    <li>No parent-child relationship is necessary between the communcating processes</li>
+    <li>several processes can use the named pipe for communication</li>
+    <li>Provided on both UNIX and Windows systems</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<div class="dropdown" style="position: fixed; top: 10%; right: 20px;">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Subtopics
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" onclick="scrollItem('theProcess')">The Process</a>
+      <a class="dropdown-item" onclick="scrollItem('processScheduling')">Process Scheduling</a>
+      <a class="dropdown-item" onclick="scrollItem('operationsOnProcess')">Operations on Process</a>
+      <a class="dropdown-item" onclick="scrollItem('interprocessCommunication')">Interprocess Communication</a>
+
+
+    </div>
+</div>
+<script>
+    function scrollItem(id){
+    document.getElementById(id).scrollIntoView()
+    }
+</script>
+<%- include('./osPartials/templateEnd') %>
