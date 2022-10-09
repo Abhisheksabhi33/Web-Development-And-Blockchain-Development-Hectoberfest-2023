@@ -1,0 +1,1026 @@
+<%- include('./partials/upper.ejs') %>
+
+<style>
+    body{
+        color: #000000;
+
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:hover{
+        color: navy;
+    }
+    .individualQuestions{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background-color:white;
+        margin: 5px;
+        flex-direction: column;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    .individualQuestions:hover{
+        transform: scale(1.04);
+        transition-duration: 500ms;
+    }
+    .individualQuestionsContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 100vh;
+        overflow-y: scroll;
+        border: 1px dashed black;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .categoryInnerContainer{
+        display: flex;
+        justify-content: center ;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 5px;
+        background-color: aquamarine;
+    }
+
+   
+    .categoryContainer{
+        /* border: 1px solid black; */
+        text-align: center;
+        margin-bottom: 20px;
+        background-color: #9a9ea7;
+
+    }
+    .categoryContainer>h3{
+        margin: 10px;
+    }
+    .doneCheckbox{
+        width: 28px;
+        height: 28px;
+        margin: 5px;
+    }
+   
+    .individualQuestions>a{
+        font-size: 23px;
+        margin-bottom: 5px;
+    }
+    .formContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .formContainer>button{
+        margin: 4px;
+    }
+    .modal{
+        color:black
+    }
+
+    .topicHeadingAndGauge{
+        display: flex;
+        align-items: center;
+        background-color: #06344a;
+        flex-wrap: wrap;
+    }
+
+    .topicHeading{
+        font-size: 35px;
+        margin-bottom: 20px;
+        color:#adad87;
+        position: relative;
+        top: 10px;
+        margin-left: 80px;
+    }
+    .gauge{
+        color: rgb(17 9 84);
+        margin-left: 30px;
+        font-size: 15px;
+        /* border: 1px solid white; */
+        padding: 5px;
+        font-weight: 100;
+        background-color: #dee2e6;
+        margin-left: auto;
+        margin-right: 20px;
+        border-radius: 20px;
+    }
+
+    
+
+
+    .button-74 {
+    background-color: white;
+    border: 1px solid #422800;
+    border-radius: 5px;
+    /* box-shadow: #422800 4px 4px 0 0; */
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 5px;
+    line-height: 15px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    }
+
+    .button-74:hover {
+    background-color: #fff;
+    }
+
+    .button-74:active {
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+    }
+
+    @media (min-width: 768px) {
+        .button-74 {
+            min-width: 60;
+            padding: 5px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .topicHeadingAndGauge {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .gauge{
+            margin:5px;
+        }
+        .topicHeading{
+            margin:5px;
+        }
+      
+    }
+
+
+    .statusBar{
+        display: none;
+    }
+    @media (min-width: 850px) {   
+
+                .statusBarPlusIndividualQuestionsContainer{
+                        display: grid;
+                        height: 100%;
+                        grid-template-columns: repeat(12,1fr);
+                        grid-template-rows:50px .5fr 1fr 2fr 1fr 1fr;
+                        grid-template-areas:"a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b";
+                        grid-gap: 0px;
+                        justify-content: center;
+                        justify-content: center;
+                }
+
+                .statusBar{
+                    grid-area: a;
+                    display: flex;
+                    flex-direction: column;
+                    background: rgb(255, 208, 0);
+                    border: 1px dashed black;
+                    overflow-y: scroll;
+                    height: 100vh;
+                    overflow-x: hidden;
+                    margin-left: 10px;
+                    margin-right: 0px;
+                }
+                .individualQuestionsContainer{
+                    grid-area: b;
+                    margin-left: 10px;
+                }
+
+                .statusBar>div{
+                    height: 500px;
+                    background-color: aliceblue;
+                    margin: 5px;
+                    text-align: center;
+                    /* border:1px solid black; */
+                    padding: 5px;
+                    cursor: pointer;
+                }
+                .statusBar>div>h3{
+                    color: rgb(31, 6, 71);
+                    font-weight: 600;
+                    font-size: 20px;
+                }
+    }
+
+    #striver{
+            height: 200px;
+            display: grid;
+                        grid-template-columns: repeat(12,1fr);
+                        grid-template-rows:1fr 1fr;
+                        grid-template-areas:"a a b b b b b b b b b b"
+                                            "a a b b b b b b b b b b";
+                        grid-gap: 0px;
+                        justify-content: center;
+                        justify-content: center;
+
+            margin: 10px;
+        }
+    #progressBar{
+        text-align: center;
+        font-size: 40px;
+        grid-area: b;
+        border: 1px dashed black;
+        margin-left: 5px;
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #toppersAndLikedQuestions{
+        grid-area: a;
+        border: 1px dashed black;
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+    #toppersAndLikedQuestions>button{
+        margin: 10px;
+    }
+    @media (max-width: 768px) {
+
+        #striver{
+                        height: 250px;
+                        grid-template-columns: repeat(6,1fr);
+                        grid-template-rows:1fr 1fr 1fr 1fr;
+                        grid-template-areas:"a a a a a a"
+                                            "a a a a a a"
+                                            "a a a a a a"
+                                            "b b b b b b";
+        }
+        #toppersAndLikedQuestions{
+            grid-area: b;
+            flex-direction: row;
+        }
+        #progressBar{
+            grid-area: a;
+            font-size: 30px;
+            margin-left: 0;
+            margin-bottom: 5px;
+        }
+    }
+
+</style>
+
+<div id="striver">
+    <div id="toppersAndLikedQuestions">
+        <button onclick="location.href='/leaderboard'" type="button" class="btn btn-primary" type="submit">Leaderboard🏆</button>
+        <button onclick="location.href='/likedQuestions'" type="button" class="btn btn-primary" type="submit">Liked Questions💖</button>
+    </div>
+    <div id="progressBar">
+        <div> Striver DSA Sheet </div>
+        <h3> You have solved <span style="color: red;"><%= totalCompletedQuestions %> </span>questions out of 185. (<%= percentageOfQuestionsDone %>% Completed)</h3>
+        <progress type="range" value="<%= percentageOfQuestionsDone %>" max="100"></progress>
+    </div>
+</div>
+<div class="statusBarPlusIndividualQuestionsContainer">
+
+            <div class="statusBar">
+                <div onclick="scrollDiv('array')"><h3>Array</h3>
+                    
+                    <%= numberOfQuestionsDoneInEachCategory[0] %>/24
+                    <br>         
+                    <%= questionsDoneInEachCategory[0] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[0] %>" max="100"></progress>
+                </div>
+                
+                <div onclick="scrollDiv('linkedList')"><h3>LinkedList</h3>
+                    
+                    <%= numberOfQuestionsDoneInEachCategory[1] %>/12
+                    <br>         
+                    <%= questionsDoneInEachCategory[1] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[1] %>" max="100"></progress>
+
+                </div>
+                
+                <div onclick="scrollDiv('linkedListAndArray')"><h3>LinkedList and Array</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[2] %>/6
+                    <br>         
+                    <%= questionsDoneInEachCategory[2] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[2] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('greedy')"><h3>Greedy</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[3] %>/6
+                    <br>         
+                    <%= questionsDoneInEachCategory[3] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[3] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('recursion')"><h3>Recursion</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[4] %>/6
+                    <br>         
+                    <%= questionsDoneInEachCategory[4] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[4] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('recursionAndBacktracking')"><h3>Recursion and Backtracking</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[5] %>/6
+                    <br>         
+                    <%= questionsDoneInEachCategory[5] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[5] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('binarySearch')"><h3>Binary Search</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[6] %>/8
+                    <br>         
+                    <%= questionsDoneInEachCategory[6] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[6] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('heap')"><h3>Heap</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[8] %>/6
+                    <br>         
+                    <%= questionsDoneInEachCategory[8] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[8] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('stackAndQueue')"><h3>Stack and Queue</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[7] %>/17
+                    <br>         
+                    <%= questionsDoneInEachCategory[7] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[7] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('string')"><h3>String</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[14] %>/12
+                    <br>         
+                    <%= questionsDoneInEachCategory[14] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[14] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('binaryTree')"><h3>Binary Tree</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[9] %>/27
+                    <br>         
+                    <%= questionsDoneInEachCategory[9] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[9] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('binarySearchTree')"><h3>Binary Search Tree</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[10] %>/22
+                    <br>         
+                    <%= questionsDoneInEachCategory[10] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[10] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('graph')"><h3>Graph</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[11] %>/11
+                    <br>         
+                    <%= questionsDoneInEachCategory[11] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[11] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('dynamicProgramming')"><h3>Dynamic Programming</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[12] %>/15
+                    <br>         
+                    <%= questionsDoneInEachCategory[12] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[12] %>" max="100"></progress>
+                </div>
+
+                <div onclick="scrollDiv('trie')"><h3>Trie</h3>
+                    <%= numberOfQuestionsDoneInEachCategory[13] %>/7
+                    <br>         
+                    <%= questionsDoneInEachCategory[13] %>% completed
+                    <progress type="range" value="<%= questionsDoneInEachCategory[13] %>" max="100"></progress>
+                </div>
+            </div>
+
+            <div class="individualQuestionsContainer">
+
+                <div class="categoryContainer" id="array">
+                    <div class="topicHeadingAndGauge">
+                            <div class="topicHeading" >Array</div> 
+                            <div class="gauge" id="arrayGauge"><%= questionsDoneInEachCategory[0] %>% completed</div>
+                    </div>
+                    <div class="categoryInnerContainer">
+                        <% for(let i=0;i<que.length;++i) { %>
+                            <% if(que[i].cat=='array') { %>
+                                <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                    <div class="formContainer">
+                                        <form class="questionForm">
+                                            <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                            <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                        
+                                        </form>
+                                        <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                        <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                    </div>
+                                </div>              
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+
+                        
+
+                        <div class="categoryContainer" id="linkedList">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >LinkedList</div> 
+                                    <div class="gauge" id="llGauge"><%= questionsDoneInEachCategory[1] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='linkedList') { %>
+                                        <div class="individualQuestions "  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        
+                        <div class="categoryContainer" id="linkedListAndArray">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >LinkedList and Array</div> 
+                                    <div class="gauge" id="llaaGauge"><%= questionsDoneInEachCategory[2] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='linkedListAndArrays') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="categoryContainer" id="greedy">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Greedy</div> 
+                                    <div class="gauge" id="greedyGauge"><%= questionsDoneInEachCategory[3] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='greedy') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+
+                        <div class="categoryContainer" id="recursion">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Recursion</div> 
+                                    <div class="gauge" id="recGauge"><%= questionsDoneInEachCategory[4] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='recursion') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                        
+
+                        <div class="categoryContainer" id="recursionAndBacktracking">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Recursion and Backtracking</div> 
+                                    <div class="gauge" id="rabGauge"><%= questionsDoneInEachCategory[5] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='recursionAndBacktracking') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="categoryContainer" id="binarySearch">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Binary Search</div> 
+                                    <div class="gauge" id="bsGauge"><%= questionsDoneInEachCategory[6] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='binarySearch') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="categoryContainer" id="heap">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Heap</div> 
+                                    <div class="gauge" id="heapGauge"><%= questionsDoneInEachCategory[8] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='heap') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        
+                        <div class="categoryContainer" id="stackAndQueue">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Stack and Queue</div> 
+                                    <div class="gauge" id="saqGauge"><%= questionsDoneInEachCategory[7] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='stackAndQueue') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="categoryContainer" id="string">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >String</div> 
+                                    <div class="gauge" id="stringGauge"><%= questionsDoneInEachCategory[14] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='string') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+
+                        <div class="categoryContainer" id="binaryTree">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Binary Tree</div> 
+                                    <div class="gauge" id="btGauge"><%= questionsDoneInEachCategory[9] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='binaryTree') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+
+                        <div class="categoryContainer" id="binarySearchTree">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Binary Search Tree</div> 
+                                    <div class="gauge" id="bstGauge"><%= questionsDoneInEachCategory[10] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='binarySearchTree') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+
+
+                        <div class="categoryContainer" id="graph">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Graph</div> 
+                                    <div class="gauge" id="graphGauge"><%= questionsDoneInEachCategory[11] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='graph') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                    
+                    
+
+                        <div class="categoryContainer" id="dynamicProgramming">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Dynamic Prgrogramming</div> 
+                                    <div class="gauge" id="dpGauge"><%= questionsDoneInEachCategory[12] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='dp') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                        
+
+
+                        <div class="categoryContainer" id="trie">
+                            <div class="topicHeadingAndGauge">
+                                    <div class="topicHeading" >Trie</div> 
+                                    <div class="gauge" id="trieGauge"><%= questionsDoneInEachCategory[13] %>% completed</div>
+                            </div>
+                            <div class="categoryInnerContainer">
+                                <% for(let i=0;i<que.length;++i) { %>
+                                    <% if(que[i].cat=='trie') { %>
+                                        <div class="individualQuestions"  <% if( doneArr.includes( que[i].qid) ) {%> style="background:lightgreen;"  <% } %> > <a target="_blank" href="<%= que[i].url %>"><%= que[i].name %></a>
+
+                                            <div class="formContainer">
+                                                <form class="questionForm">
+                                                    <input id="<%= que[i].qid %>" <% if( doneArr.includes( que[i].qid) ) {%> checked  <% } %>  name="checkbox" type="checkbox" class="doneCheckbox">
+                                                    <button class="submitButton" style="display: none;" type="submit">submit</button>
+                                                
+                                                </form>
+                                                <button  type="button" onclick="showNote(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="notesButton button-74"> Notes</button>
+                                                <div <% if( likedQuestionsArr.includes( que[i].qid) ) {%>type='liked'  style="background:tomato;"  <% } %> onclick="like(this)"  <% if(typeof isAuthenticated == 'undefined' || isAuthenticated==false){ %> dir="noAuth"  <%} %>  id="<%= que[i].qid %>" class="likeButton button-74"> Like</div>
+                                            </div>
+                                        </div>              
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+            </div>
+</div>
+    <!-- Modal -->
+    <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Take a note</h5>
+             
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <textarea class="form-control"  id="notesTextarea"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+                    
+                <button onclick="saveNote()" type="button" class="btn btn-primary ">Save</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+<script>
+                    
+                    function scrollDiv(id){
+                        document.getElementById(id).scrollIntoView()
+                    }
+                    function toastMessage(message){
+                        return Toastify({
+                                        text:message,
+                                        duration: 3000,
+                                        // destination: "https://github.com/apvarun/toastify-js",
+                                        newWindow: true,
+                                        close: true,
+                                        gravity: "top", // `top` or `bottom`
+                                        position: "center", // `left`, `center` or `right`
+                                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                                        style: {
+                                            background:"linear-gradient(to right, #00b09b, #96c93d)",
+                                        },
+                                        onClick: function(){} // Callback after click
+                                        }).showToast();
+                    }
+                
+                    let form=document.getElementsByClassName('questionForm')
+                    for(let i=0;i<form.length;++i)
+                        form[i].addEventListener('submit',async(e)=>{
+                            e.preventDefault()
+                            // alert(e.target.checkbox.checked)
+                            console.log(e.target.checkbox.checked)
+                            // alert(form[i].childNodes[1].getAttribute('id'))
+                            const qid = form[i].childNodes[1].getAttribute('id');
+                            const done=e.target.checkbox.checked
+                            try{
+                                const data = await fetch('/checkQuestion',{
+                                    method:"POST",
+                                    headers:{"Content-Type":"application/json"},
+                                    body:JSON.stringify({qid,done})
+                                })
+                                
+                                const res = await data.json()
+                                console.log(res)
+                                let message
+                                if(done)
+                                    message="Congratulations!! You just solved a question."
+                                else 
+                                    message="Better luck next time!"
+                                
+                                if(res.error)
+                                    message=res.error
+                            
+
+                                return toastMessage(message)
+                                }
+                            catch(e){
+                                console.log(e)
+                            }
+                        })
+                    let checkbox = document.getElementsByClassName('doneCheckbox')
+                    for(let i=0;i<checkbox.length;++i)
+                    {
+                        checkbox[i].addEventListener('input',async function(){
+                            // checkbox[i].parentNode.parentNode.style.background="lightgreen";
+                            // alert(checkbox[i].parentNode.childNodes[3].getAttribute('type'))
+                            
+                            if(checkbox[i].checked)
+                            {
+                                checkbox[i].parentNode.parentNode.parentNode.style.background="lightgreen";
+                                // console.log('f')
+                            }
+
+                            if(!checkbox[i].checked)
+                            {
+                                checkbox[i].parentNode.parentNode.parentNode.style.background="white";
+                                // console.log('f')
+                            }
+                        checkbox[i].parentNode.childNodes[3].click()
+                            
+                        
+
+                        })
+                    }
+
+
+                    let notesButton=document.getElementsByClassName('notesButton')
+                    for(let i=0;i<notesButton.length;++i)
+                    {
+                        notesButton[i].addEventListener('click',()=>{
+
+                            // prompt(notesButton[i].getAttribute('id'))
+                            // document.getElementById('notesTextarea').value=notesButton[i].getAttribute('id')
+                            document.getElementById('notesTextarea').setAttribute('type',notesButton[i].getAttribute('id'))
+                            
+                            
+                            $('#notesModal').modal('toggle')
+
+                        })
+
+                    }
+
+                 
+  
+                    async function showNote(qid){
+
+                        if(qid.getAttribute('dir')=='noAuth')
+                        {
+                            $('#notesModal').modal('hide')
+                            return toastMessage('Please login to view your note!')
+                        }
+                        try{
+                                const data = await fetch('/getNotes',{
+                                    method:"POST",
+                                    headers:{"Content-Type":"application/json"},
+                                    body:JSON.stringify({qid:qid.getAttribute('id')})
+                                })
+
+                                const res = await data.json()
+                                console.log(res)
+                                document.getElementById('notesTextarea').value=res.notes
+                                // $('#notesModal').modal('hide');
+                        }   
+                        catch(e)
+                        {
+                            alert(e)
+                        }
+                                
+                    }
+                    
+                async function saveNote(){
+                        let noteValue = document.getElementById('notesTextarea')
+                        // alert(noteValue.value+" , "+noteValue.getAttribute('type'))
+                        $('#notesModal').modal('hide')
+
+                        try{
+                            let noteToBeSaved=noteValue.value 
+                            let qid=noteValue.getAttribute('type')
+
+                            let data = await fetch('/saveNote',{
+                                method:"POST",
+                                body:JSON.stringify({qid,noteToBeSaved}),
+                                headers:{"Content-Type":"application/json"}
+                            })
+
+                            let res = await data.json()
+
+                            if(res.error)
+                            return toastMessage(res.error)
+                            toastMessage("Note Saved")
+                            console.log(res)
+                        }
+                        catch(e){
+                            alert(e)
+                        }
+                    }
+
+
+                    async function like(qid){
+
+                        if(qid.getAttribute('dir')=='noAuth')
+                        return toastMessage('Please login to like this question!')
+
+                        let status = qid.getAttribute('type')
+                        
+                        if(status=='liked')
+                        {
+                            qid.style.background="white"
+                            qid.setAttribute('type','notLiked')
+                            status='notLiked'
+                        }
+                        else  
+                        {
+                            qid.style.background="tomato"
+                            qid.setAttribute('type','liked')
+                            status='liked'
+                        }
+                        try{
+                                qid=qid.getAttribute('id')
+
+                                const data = await fetch('/likeQuestion',{
+                                    method:"POST",
+                                    body:JSON.stringify({qid,status}),
+                                    headers:{"Content-Type":"application/json"}
+                                })
+
+                                const res = await data.json()
+                                if(res.message)
+                                toastMessage(res.message)
+                                console.log(res)
+                        }
+                        catch(e)
+                        {
+                            alert(e)
+                        }
+                    }
+
+
+
+              
+</script>
+    
+
+    
+</div>
+<br>
+<br>
+<%- include('./partials/lower.ejs') %>
+
+

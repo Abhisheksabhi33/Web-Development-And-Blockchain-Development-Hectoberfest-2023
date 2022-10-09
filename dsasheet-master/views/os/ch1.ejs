@@ -1,0 +1,549 @@
+<%- include('./osPartials/templateStart') %>
+
+<style>
+    i{
+        color: navy;
+        font-weight: 800;
+    }
+</style>
+
+<h1 style=" text-align:center; font-size: 40px;font-weight: 900;">Introduction</h1><hr>
+
+
+<h3><b><u>What is an Operating System?</u></b></h3>
+An operating system acts as an intermediary between the user of a
+computer and the computer hardware.
+
+<br><br>
+<h4>Goals of an Operating System</h4>
+<ul>
+    <li>The purpose of an operating system is to provide an environment in which a user can execute programs in a <b>convenient</b> and <b>efficient</b> manner.</li>
+    <li>Use the computer hardware in an efficient manner.</li>
+
+</ul>
+
+<h4><b><u>Computer System Structure</u></b></h4>
+Computer system can be divided into four components:
+<ul>
+    <li><b>Hardware:</b> provides basic computing resources like CPU, memory, I/O devices</li>
+    <li><b>Operating System:</b> controls and coordinates use of hardware among various applications and users</li>
+    <li><b>Application Programs:</b> define the ways in which the system resources are used to solve the computing problems of the users. ex: word processors, compilers, web browsers, database systems, video games. </li>
+    <li><b>Users:</b> People, machines, other computers.</li>
+</ul>
+<img title="four components of a computer system" alt="four components of a computer system" src="https://4.bp.blogspot.com/-uDlmE0s0hSs/UGE5zehCDuI/AAAAAAAAAK8/FGhFpamPN-U/s1600/os.bmp">
+<br><br>
+<h4><b><u>What Operating Systems do?</u></b></h4>
+
+<ul>
+    <li>The operating system controls the hardware and coordinates its use among the various applications programs for the various users.</li>
+    <li>We can also view a computer system as consisting of hardware, software, and data.</li>
+    <li>The OS provides the means for proper use of these resources in the operation of the computer system.</li>
+    <li>To understand more fully the OS'role, we need to explore operating system from two viewpoints: <ul><li><b>The User</b></li><li><b>The System</b></li></ul></li>
+</ul>
+<br>
+<h4>User View</h4>
+
+The user's view of the computer varies according to the interface being used.
+
+<ul>
+    <li><b>Single user computers:</b>computers (e.g., PC, workstations). Such systems are
+        designed for one user to monopolize its resources. The goal is to
+        maximize the work (or play) that the user is performing. The operating
+        system is designed mostly for <i>ease of use</i>  and <i>good performance</i> .</li>
+    <li><b>Multi user computers:</b>(e.g., mainframes, computing servers). These
+        users share resources and may exchange information. The operating
+        system in such cases is designed to <i>maximize resource utilization</i>  ‐‐ to
+        assure that all available CPU time, memory, and I/O are used efficiently
+        and that no individual users takes more than their air share. </li>
+    <li>
+        <b>Handheld Computers:</b>(e.g., smartphones and tablets). The user interface for
+        mobile computers generally features a <i>touch screen.</i>  The systems are
+        resource poor, optimized for usability and battery life.
+    </li>
+    <li>
+        <b>Embedded computers:</b>
+        (e.g., computers in home devices and automobiles)
+The user interface may have numeric keypads and may turn indicator lights
+on or off to show status. The operating systems are designed primarily to
+run without user intervention.
+    </li>
+</ul>
+<br>
+<h4>System View</h4>
+From the computer's point of view, the OS is the program most intimely involved with the hardware. There are two different views:
+<ol>
+    <li>The operating system is a <i>resource allocater</i>.
+        <ul>
+            <li>Manages all resources</li>
+            <li>Decides between conflicting requests for efficient and fair resource use</li>
+        </ul>
+    </li>
+    <li>
+        The operating system is a <i>control program</i>
+        <ul>
+            <li>controls execution of programs to prevent an improver use of the computer</li>
+        </ul>
+    </li>
+</ol>
+
+<br>
+<h4>Defining Operating System</h4>
+There is no universally accepted definition of what an OS:
+
+<ul>
+    <li>Operating systems exist to offer a reasonable way to solve the problem of
+        creating a usable computing system.
+    </li>
+    <li>The fundamental goal of computer systems is to execute user programs
+        and to make solving user problems easier.
+    </li>
+    <li>
+        Since bare hardware alone is not particularly easy to use, application
+programs are developed.
+        <ul>
+            <li>These programs require certain common operations, such as those controlling
+                I/O devices.
+            </li>
+            <li>
+                The common functions of controlling and allocating resources brought
+together into one piece of software: the <i>operating system.</i> 
+            </li>
+        </ul>
+    </li>
+    <li>
+        A more common definition, and the one that we usually follow, is that
+the operating system is the one program running at all times on the
+computer -- usually called the <i>kernel</i> .
+    </li>
+</ul>
+
+<img src="https://static.javatpoint.com/operating-system/images/history-of-the-operating-system.png">
+<br>
+
+<br>
+<h3><u><b>Computer-System Organization</b></u></h3>
+
+<ul>
+    <li>
+        A modern general purpose computer system consists of one or more CPUs and a number of device controllers connected through a common bus that provides access to shared memory.
+    </li>
+    <li>
+        Each device controller is in charge of a specific type of device ( for examplek, disk drives, audio devices, or video displays). Each device controller has a local buffer.
+    </li>
+    <li>
+        CPU moves data form/to main memory to/from local buffers.
+    </li>
+    <li>
+        The CPU and the device controllers can execute in parallel, competing for
+memory cycles. To ensure orderly access to the shared memory, a
+memory controller synchronizes access to the memory.
+    </li>
+</ul>
+
+<h4>Modern Computer System</h4>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter1/1_2_ModernSystem.jpg">
+
+<br>
+<h4>Computer Startup</h4>
+<ul>
+    <li>
+        <i>Bootstrap program</i> is loaded at power-up or reboot.
+        <ul>
+            <li>It is typically stored in ROM or EPROM, it is generally known as <i>firmware.</i></li>
+            <li>It initializes all aspects of system.</li>
+            <li>It loads operating system kernel and starts execution.</li>
+        </ul>
+    </li>
+    <li>
+        Once the kernel is loaded and executing, it can start providing services to the system and its users.
+    </li>
+</ul>
+<br>
+<h4>Interrupts</h4>
+
+The interrupt is a signal emitted by hardware or software when a process or an event needs immediate attention. It alerts the processor to a high-priority process requiring interruption of the current working process.
+
+<br>
+<br>
+There are two types of interrupts:
+<ul>
+    <li><i>Hardware</i>: A device may trigger an interrupt by sending a signal to the CPU, usually by way of the system bus.</li>
+    <li><i>Software</i>: A program may trigger an interrupt by executing a special operation called a system call.</li>
+</ul>
+
+A software generated interrupt (sometimes called trap or exeception) is caused either by an error (eg. divide by zero) or a user request (eg an I/O request).
+<br>
+An operating system is <i>interrupt driven.</i>
+
+<br><br>
+<h4>Common functions of interrupts</h4>
+<ul>
+    <li>
+        When an interrupt occurs, the operating system preserves the state of
+the CPU by storing the registers and the program counter
+    </li>
+    <li>
+        The OS determines which type of interrupt has occured and transfers control to the <i>interrupt-service routine.</i>
+    </li>
+    <li>
+        An interrupt-service routine is a collection of routines(modules), each of which is responsible for handling one particular interrupt(eg from a printer, from a disk).
+    </li>
+    <li>
+        The transfer is generally through the interrupt vector, which contains
+the addresses of all the service routines.
+    </li>
+
+</ul>
+<br>
+<h3><u><b>Storage Structure</b></u></h3>
+
+Van Neumann Architecture
+<br><br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Von_Neumann_Architecture.svg">
+
+
+<br><br>
+<h4>Main Memory</h4>
+It is the only storage media that the CPU can access directly. It is volatile in nature.
+<br><br>
+<h4>Secondary Storage</h4>
+It is extension of main memory that provides large non-volatile storage capacity.
+eg.
+<ul>
+    <li>Hard disks - rigid metal or glass platters covered with magnetic recording material. Disk surface is logically divided into tracks, which are subdivided into sectors. The disk controller determines the logical interaction between the device and the computer.</li>
+    <li>Solid-state disks - these are faster than hard disks, non-volatile.</li>
+    <li>Tertiary storage</li>
+</ul>
+
+
+<br>
+<h3><b><u>Storage Hierarchy</u></b></h3>
+<br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter1/1_4_StorageDeviceHierarchy.jpg">
+
+
+<br><br>
+<h3><u><b>Modes of Operation</b></u></h3>
+
+It is a mechanism that allows the OS to protect itself and other system components.
+<br>
+There are two modes <ul>
+    <li><i>User mode</i></li>
+    <li><i>Kernel mode</i> ( also called <i>supervisor mode, system mode, or privileged mode</i>)</li>
+</ul>
+A bit, called the mode bit, is added to the hardware of the computer
+to indicate the current mode: kernel (0) or user (1). With the mode bit, we can
+distinguish between a task that is executed on behalf of the operating system
+and one that is executed on behalf of the user. When the computer system is
+executing on behalf of a user application, the system is in user mode. However,
+when a user application requests a service from the operating system (via a
+system call), the system must transition from user to kernel mode to fulfill
+the request.
+
+<br><br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter1/1_10_UserToKernelMode.jpg">
+<br><br>
+At system boot time, the hardware starts in kernel mode. The operating
+system is then loaded and starts user applications in user mode. Whenever a
+trap or interrupt occurs, the hardware switches from user mode to kernel mode
+(that is, changes the state of the mode bit to 0). Thus, whenever the operating
+system gains control of the computer, it is in kernel mode. The system always
+switches to user mode (by setting the mode bit to 1) before passing control to
+a user program.
+
+<br><br>
+
+<h4>Timer</h4>
+Timer is used to prevent a user program get stuck in an infinite loop or to fail to call system services and never return control to the operating system.
+<ul>
+    <li>Time is a counter that is decremented by the physical clock.</li>
+    <li>Timer is set to interrupt the computer after some period.</li>
+    <li>Operating system sets the counter (privileged instruction).</li>
+    <li>When counter reaches the value zero, and interrupt is generated.</li>
+    <li>The OS sets the value of the counter before scheduling a process to regain control or terminate program that exceeds alloted time.</li>
+</ul>
+
+
+<br>
+<h3><b><u>Process Management</u></b></h3>
+
+A process is a program in execution. It is a unit of work within the system. Program is a <i>passive entity</i>, process is a <i>active entity.</i>
+<br><br>
+A process needs resources to accomplish its task.
+These resources are:
+<ol>
+    <li>CPU time, memory, I/O, files etc</li>
+    <li>Intialization data</li>
+</ol>
+A process termination requires reclaim of any reusable resources.
+<br><br>
+A<i> thread</i> is a basic unit of CPU utilization within a process.
+<br><br>
+In single‐threaded process, instructions are executed sequentially, one at a time, until completion. Process has one program counter specifying location of next instruction to execute.
+<br><br>
+In multi-threaded process, there is one program counter per thread.
+<br><br>
+Typically, a system has many processes, some user, some os, running concurrently on one or more CPUs. Concurrency is maintained by multiplexing the CPUs among the threads.
+
+<br><br>
+<h4>Process Management Activities</h4>
+The OS is responsible for the following activities in connection with process management:
+<ol>
+    <li>Creating and deleting both user and system processes. </li>
+    <li>Suspending and resuming processes.</li>
+    <li>Providing mechanisms for process synchronization.</li>
+    <li>Providing mechanisms for process communication.</li>
+    <li>Providing mechanism for deadlock handling.</li>
+</ol>
+
+<br>
+<h4>Memory Management</h4>
+A program is executed only when it is loaded inside the main memory.
+<br><br>
+Memory management activities:
+<ol>
+    <li>
+        Keeping track of which parts of memory are currently being used and by
+        whom.
+    </li>
+    <li>
+        Deciding which processes (or parts thereof) and data to move into and out
+of memory.
+    </li>
+    <li>
+        Allocating and deallocating memory space as needed.
+    </li>
+    <li>
+        Deciding which processes (or parts thereof) and data to move into and out
+of memory.
+    </li>
+    <li>
+        Allocating and deallocating memory space as needed.
+    </li>
+</ol>
+
+<br>
+<h4>Storage Management</h4>
+OS provides uniform, logical view of information storage.
+ It abstracts physical properties to logical storage unit called <i>file</i>. 
+ <br>
+ Files are stored in a number of different storage medium like:
+ <ul>
+     <li>Disk</li>
+     <li>Flash Memory</li>
+     <li>Tape</li>
+ </ul>
+Each medium is controlled by device drivers (ie, disk drive, tape drive). Varying properties include access speed, capcity, data-transfer rate, access method (sequential or random).
+
+<br><br>
+<h4>File System Management</h4>
+Files are usually organized into directories. 
+<br>OS activities include:
+<ul>
+    <li>Creating and deleting files and directories.</li>
+    <li>Primitives to manipulate files and directories.</li>
+    <li>Mapping files onto secondary storage.</li>
+    <li>Backup files onto stable (non-volatile) storage media.</li>
+</ul>
+
+<br>
+<h4>Caching</h4>
+<ul>
+
+    <li>There are many cases in which a smaller higher-speed storage space serves as a cache, or temporary storage, for some of the most frequently needed portions of larger slower storage areas.</li>
+    <li>
+        The hierarchy of memory storage ranges from CPU registers to hard drives and external storage. ( See table below. )
+    </li>
+    <li>
+        The OS is responsible for determining what information to store in what level of cache, and when to transfer data from one level to another.
+    </li>
+    <li>
+        The proper choice of cache management can have a profound impact on system performance.
+    </li>
+    <li>
+        Data read in from disk follows a migration path from the hard drive to main memory, then to the CPU cache, and finally to the registers before it can be used, while data being written follows the reverse path. Each step ( other than the registers ) will typically fetch more data than is immediately needed, and cache the excess in order to satisfy future requests faster. For writing, small amounts of data are frequently buffered until there is enough to fill an entire "block" on the next output device in the chain.
+    </li>
+    <li>
+        The issues get more complicated when multiple processes ( or worse multiple computers ) access common data, as it is important to ensure that every access reaches the most up-to-date copy of the cached data ( amongst several copies in different cache levels. )
+    </li>
+</ul>
+<br><br>
+<h4>Performance of various levels of storage</h4>
+
+<br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter1/1_11_StoragePerformance.jpg" >
+<br>
+<br>
+<h4>Migration of data from disk to register</h4>
+<br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter1/1_12_IntegerMigration.jpg">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<div style="display:none;" class="dropdown" style="position: fixed; top: 10%; right: 20px;">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Subtopics
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" onclick="scrollItem('theProcess')">The Process</a>
+      <a class="dropdown-item" onclick="scrollItem('processScheduling')">Process Scheduling</a>
+      <a class="dropdown-item" onclick="scrollItem('operationsOnProcess')">Operations on Process</a>
+      <a class="dropdown-item" onclick="scrollItem('interprocessCommunication')">Interprocess Communication</a>
+
+
+    </div>
+</div>
+<script>
+    function scrollItem(id){
+    document.getElementById(id).scrollIntoView()
+    }
+</script>
+<%- include('./osPartials/templateEnd') %>

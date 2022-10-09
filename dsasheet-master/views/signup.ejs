@@ -1,0 +1,76 @@
+<%- include('./partials/upper.ejs') %>
+
+<div class="container my-5 p-5" style="border: 3px dashed black; background-color: #e1dbe7; max-width: 300px;">
+    <h3>Signup 😇</h3>
+    <hr>
+    <form id="signupForm">
+        <div class="form-group">
+            <label for="name">Full name</label>
+          <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+       
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" class="form-control" id="password placeholder="Password">
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <hr>
+        <span>Already Registered? <a href="/login">login</a></span>
+      </form>
+</div>
+
+<script>
+        const form = document.getElementById('signupForm')
+        form.addEventListener('submit', async (e)=>{
+            e.preventDefault()
+            const name=e.target.name.value
+            const email=e.target.email.value
+            const password=e.target.password.value     
+
+            try{
+
+                const res = await fetch('/signup',{
+                    method:"POST",
+                    body:JSON.stringify({name,email,password}),
+                    headers:{'Content-Type':'application/json'}
+                })
+
+                const data = await res.json()
+                if(data.error)
+                {
+                    return Toastify({
+                        text:data.error,
+                        duration: 3000,
+                        // destination: "https://github.com/apvarun/toastify-js",
+                        newWindow: true,
+                        close: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "center", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                          
+                            // background:"tomato",
+                            // color:"black"
+                        },
+                        onClick: function(){} // Callback after click
+                        }).showToast();
+                }
+                
+                location.assign('/')
+
+            }
+            catch(e)
+            {
+                alert(e)
+            }
+
+        })
+</script>
+
+<%- include('./partials/lower.ejs') %>

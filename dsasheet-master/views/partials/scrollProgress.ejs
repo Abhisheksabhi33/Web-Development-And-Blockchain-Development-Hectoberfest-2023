@@ -1,0 +1,81 @@
+<style>
+    
+.progress-header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: #f1f1f1;
+  display: none;
+}
+
+
+
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #ccc;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #04AA6D;
+  width: 0%;
+}
+
+#gotoTopButton {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 25px;
+    border-radius: 4px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAMAAACcwCSMAAAAYFBMVEWMr7/6+vr///9CdoegyNaAp7ny9PUjZ3r2+PlmkKBUhJSGq7zm7O/I197t8fOlv8vP3OKZt8Y1cIJvk6C3yM4ua35LfIyRtsW8zteXvczd5uqtxdBrlqdAeIx7orJ2obQXeoEbAAAEb0lEQVRoge3b2WKjIBQAUMViaNC4pI1WO8n//+WooLLrjeg8jPepTZQTZBFBAvQPIzhxFJLdI+6D6DipC7x3PH//XC6X8v6l4DmlwQFRPaMuvh+JiOf4CLqPQY++kxknh2Sbxe+gP2a8PhAPWNa/RjwsDrSD66DfR5yoJV79/HxIUXnEPwe8JEa8+jCER53hl9iEm+ijcLP94c924Gb6x5bQO12TFTeWt50u6roA81YcQgc47ZtLCu0cbbiecUdFozkKu+huC/vgrjrObbhuw+WuxX7BRRus2/D1TVuwofoa3JkAFu1eB9S6FbjzfCrbsLwv4zAbpC/iUBuiW/CppTnrGjbZgHJfwJ1tzGKv1xdwV8at9mp9AXecaSxvWLm78eX+fJP+Lr5gr9PduPU0R3kDyt2JW+v6CnuN7uxkbFd98ZqvvPJOfJu9rLtwy1VfbS/qrpGM+YxV5b1Ot49eLfkG2Qu1zvXE4sF25x2IA8p7hQ7DaQ22O936zA/M+Q1uh+HNT84L8g5ObDMOMLx6C49tPSWwzOH1zVXjoE2tQUoYMCUaa2JQnLapFLlWBW+5fETrrZ33vBQ4UB8aAiwf4UgKjiuBExlPPDwunfiJn/iJn/iJn/iJn/iJ74Q3Mt4ciQetvNLgeEbYAe+e3+YFHj9rLBA9y6eA5NsL3j1AjS+BABdUfeBvx4mfuAE3vdtE5QOCoguqVnbxeGMzWMZpc9Minuf1aNA27O2uMM4zajwxSfK6MPgrcMPEH0rHlGgtfhzeBJ4m0leJ3gG9h4cT3qhTMul8TRLrV37wyZ7693mmVcX1m84KnIgTbnxujd0/xvlvRJo8b0L+z3jlOU4ImX4ZOOe80r7SIYXiNdd2mrFESdvPfmHMp6RjOef9CRU7WZ1/Xt3OKTs/E38VSz0eX5DB7NY+Xl2ODynidPi78YcXkhVMxZDoeFAMfydymhtw3spuQm7YlDif4pbwYPhGmXnfgjdaA+Jea8M95jyRKncfOBd+j4jTzHOZ0yEzSDpoqPB8OWvGu5411q7SRpzVN/EMvgDUiHhQZFnKViiQsuTgGW91vOtkxu5HHdruj8+hvVO7vcylu6ihzMdASlXfiA93HCSuW7EFILm2DwchlLR60tvbea21cyS18/5ZIm2N70huwfX+mi/6ST3cy77Ssr1vF95Q5i3tJl6G0JrixrtaLGedVqHYleyL84yiJsD9ghfmF52MX++Kd8kzPczbtq35kGqqgXvj06oyCsNxnNUoY7i98O5mRdTRa6KOXv3goY53eVfGzsJ9C4zHLyueD8PWTP0ctw0b2/Y/PS8Eit6GMxz4VcE/7Yf2z2OGdwC6ap7Vw3JxJT/CsRNc+xRKBS8dx1pjeb3YGGw3h4Bfft/R3wocaXh0lP58GPDy+jyApp9RpOKkrwNldN07onKy560k6B4dHtMmGvT1fbQ9bx9C6LF8uN8QNk6h5OCsi1vGOv1xIK9sluvL/V5eDgl9m2AfbP/i7mHYIPlP4v/F/wLEtHUAocrpRAAAAABJRU5ErkJggg==');
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+
+    #gotoTopButton:hover {
+    background-color: #555;
+    }
+   
+</style>
+<div class="progress-header" id="progress-header">
+    <div class="progress-container">
+      <div class="progress-bar" id="myBar"></div>
+    </div>  
+</div>
+<button onclick="topFunction()" id="gotoTopButton" title="Go to top"></button>
+<script>
+    // When the user scrolls the page, execute myFunction 
+    window.onscroll = function() {scrollProgressFunction(),scrollFunction()};
+    
+    function scrollProgressFunction() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("myBar").style.width = scrolled + "%";
+    }
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("gotoTopButton").style.display = "block";
+        document.getElementById("progress-header").style.display = "block";
+      } else {
+        document.getElementById("gotoTopButton").style.display = "none";
+        document.getElementById("progress-header").style.display = "none";
+      }
+    }
+    
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+</script>
+    

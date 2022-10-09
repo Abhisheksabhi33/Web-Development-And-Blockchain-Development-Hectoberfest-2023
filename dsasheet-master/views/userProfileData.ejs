@@ -1,0 +1,60 @@
+<%- include('./partials/upper.ejs') %>
+
+<style>
+    .userData{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 30px;
+    }
+    .userData>div{
+        margin: 5px;
+        border: 1px dashed black;
+
+        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+    .key{
+        width: 25%;
+        background-color: #858577;
+        padding: 5px;
+        color: white;
+        font-weight: 900;
+        text-align: center;
+    }
+    .value{
+        width: 75%;
+        background-color: white;
+        padding: 5px;
+        text-align: center;
+        word-wrap: break-word;
+    }
+</style>
+<div class="userData">
+
+    <% if(typeof success!='undefined' && success){ %>
+
+        <% if(typeof publicAccount!='undefined'){ %>
+            <h1><%= userName%>'s account is private!</h1>
+        <% } else { %>
+            <h2><%=userName%></h2>
+            <div> <div class="key">Email</div> <div class="value"> <%=email%> </div></div>
+            <div> <div class="key">College</div> <div class="value"> <%=college%> </div></div>
+
+            <div> <div class="key">Portfolio</div> <div class="value"><% if(portfolio!='NA') { %> <a target="_blank" href="<%= portfolio %>"><%=portfolio%> </a>  <% } else {%> <%= portfolio %> <% } %></div></div>
+            
+            <div> <div class="key">Company</div> <div class="value"> <%=company%> </div></div>
+            <div> <div class="key">Country</div> <div class="value"> <%=country%> </div></div>
+            <div> <div class="key">Phone</div> <div class="value"> <%=phone%> </div></div>
+        <% } %>
+    <% } else { %>
+        <h1>Invalid user id!</h1>
+    <% } %>
+</div>
+
+
+
+
+<%- include('./partials/lower.ejs') %>

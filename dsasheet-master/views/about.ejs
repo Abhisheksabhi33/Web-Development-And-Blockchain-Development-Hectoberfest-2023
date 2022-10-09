@@ -1,0 +1,33 @@
+<%- include('./partials/upper.ejs') %>
+
+<style>
+    .aboutUsContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        flex-direction: column;
+    }
+    @media (max-width: 768px) {
+        .aboutUsContainer>iframe{
+            width: 340px;
+        }
+    }
+</style>
+
+<div class="aboutUsContainer">
+
+    <h2 style="margin-bottom: 30px; text-align: center;"><strong>Focussed</strong> - <i>Ace your computer science journey!🚀✨😀</i></h2>
+    <iframe style="border: 1px solid white;" frameborder="0" width="560" height="315" src="https://drive.google.com/file/d/1tCd763QzleUCMI5AzRpd246j3odpUNEq/preview" allowfullscreen="true" allow="autoplay"> </iframe>
+    <p style="margin: 40px;">
+        At <b>"Focussed"</b>, you can solve various questions related to computer science domain like data structures and algorithms, c++, computer networks etc. The best part is that you can track your progress and compete with your contemporary learners.
+        <br>    <br>
+
+Today, almost every student has access to informative blogs, educational articles, problem solving portals etc. There are tons of free resources available and many times students got submerge in this ocean of resources, they fail to decide which resource to follow or not, hence  being in dilemma, they fail to put their best. 
+Focussed helps students overcome this problem by providing them the best curated resources that are more than sufficient for cracking interviews, practicing most important questions of particular subjects etc, in minimum time. ie. Focussed encourges <i><b>"Study Smart"</b></i> model.
+    </p>
+</div>
+
+<br><br>
+
+<%- include('./partials/lower.ejs') %>

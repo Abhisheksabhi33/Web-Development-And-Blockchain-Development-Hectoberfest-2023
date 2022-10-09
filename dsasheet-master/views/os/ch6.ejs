@@ -1,0 +1,431 @@
+<%- include('./osPartials/templateStart') %>
+
+<h1 style=" text-align:center; font-size: 40px;font-weight: 900;">CPU Scheduling</h1><hr>
+
+CPU scheduling is the basis of multiprogramming operating systems. <br>
+By switching the CPU among processes, the operating system can make the computer more productive.
+ <br><br>
+<h4>Topics to be covered</h4>
+<ol>
+    <li>To introduce CPU scheduling, which is the basis for multiprogramming operating systems.</li>
+    <li>To describe various CPU-scheduling algorithms.</li>
+</ol>
+
+
+ In a single-processor system, only one process can run at a time. Any others must wait until the CPU is free and can be rescheduled. 
+ <br>
+ <ul>
+     <li>
+         The objective of multiprogramming is to have some process running at all times, to maximize CPU utilization.
+     </li>
+     <li>
+        A process is executed until it must wait, typically for the completion of some I/O request.
+     </li>
+     <li>The main motive of CPU scheduling is that it must not remain idle. Some process must utilize the CPU time.</li>
+     <li>With multiprogramming, we try to use this time productively.</li>
+     <li>
+         Several processes are kept in memory at one time.
+     </li>
+     <li>When one process has to wait, the operating system takes the CPU away from that process and gives the CPU to another process and this pattern continues.</li>
+ </ul>
+  
+<br>
+<h3><b><u>CPU and I/O Burst Cycles</u></b></h3>
+
+Process execution consists of a cycle of <b>CPU execution</b> and <b>I/O wait</b>. Processes alternate between these two states.
+<br><br>
+<b>CPU burst</b>: When the process is under CPU execution, we say that there is a CPU burst.
+<br><br>
+<b>I/O burst</b>: When the process is waiting for some I/O operation to be complete, then we say that the process is under I/O burst.
+<br><br> Processes execution starts with a CPU burst. Eventually, final CPU burst end with a system request to terminate execution.
+<br><br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter6/6_01_CPU_BurstCycle.jpg" alt="">
+
+<br><br>
+
+<h3><b><u>Preemptive and Non-preemptive Scheduling</u></b></h3>
+<b>
+    CPU Scheduler:</b> Whenever the CPU becomes idle, the OS must select one of the processes in the ready queue to be executed. The selection process is carried out by the short-term scheduler or CPU scheduler. The scheduler selects a process from the processes in memory that are ready to execute and allocates the CPU to that process.
+
+<br><br>
+<b>Dispatcher</b>: The dispatcher is the module that gives control of the CPU to the process selected by the short-term scheduler. The time it takes for the dispatcher to stop one process and start another running is known as <b>dispatch latency.</b> <br>For an efficient system, dispatch latency should be minimum.
+
+<br><br>
+
+<h4>CPU-scheduling decisions may take place under the following four circumstances.</h4>
+<ol>
+    <li>When a process switches from the running state to the waiting state (for example, waiting for an I/O).</li>
+    <li>
+        When a process switches from the running state to the ready state (for example, when an interrupt occurs).
+    </li>
+    <li>
+        When a process switches from the waiting state to the ready state (for example, at completion of I/O).
+    </li>
+    <li>When a process terminates.</li>
+</ol>
+
+For <b>situations 1 and 4</b>, there is no choice in terms of scheduling, a new process (if one exists in the ready queue) must be selected for execution. However, there is a choice for <b>situations 2 and 3</b>.
+
+<br><br>
+<b>Non-Preemptive or Cooperative Scheduling</b>: When scheduling takes place only under circumstances 1 and 4. <br> In other words, a process is not disturbed or not got its CPU-hold off until it is completed or it gets into waiting state.
+<br><br>
+<b>Preemptive Scheduling</b>: When scheduling takes place only under circumstances 2 and 3. <br>
+<br>There may be scenerios when there is a process being executed, there is a very high priority process that has to be executed. That time we need to stop the exeuction of the current one and execute that high priority process. At that time preemptive scheduling will be required.
+<br>There are drawbacks of preemptive scheduling. For example in case of shared memory. So let's say that there is a shared region of memory into which different processes has access and different processes can write and read from that shared region of memory, so let's say that we are following this preemptive scheduling and one process was writing something into the shared memory, and another process came then the first process had to be preempted, that means the first process was halted and then the CPU was given to the second process now the second process when in reads from that memory into which the first process was
+just writing and did not complete what it was writing so
+that the second process is going to read some inconsistent data because the first process that was doing the writing job did not complete what it was doing. So these are some of the problems with preemptive scheduling.
+
+<br><br>
+<h3><b><u>Scheduling Criteria</u></b></h3>
+
+There are some criteria on which scheduling depends.
+<ol>
+    <li>CPU utilization</li>
+    <li>Thoughput</li>
+    <li>Turnaround time</li>
+    <li>Waiting time</li>
+    <li>Response time</li>
+</ol>
+
+
+<h4>1. CPU utilization</h4>
+We want to keep the CPU as busy as possible. Conceptually, CPU utilization can range from 0 to 100 percent. In a real system, it should range from 40 percent (for a lightly loaded system) to 90 percent (for a heavily used system). We don' want CPU to remain idle.
+<br><br>
+
+<h4>2. Throughput</h4>
+If the CPU is busy executing processes, then work is being done. One measure of work is the number of processes that are completed per unit time, called throughput.
+<br><br>
+<h4>3. Turnaround time</h4>
+From the point of view of a particular process, the important criterion is how long it takes to execute that process. The interval from the time of submission of a process to the time of completion is the turnaround time. Turnaround time is the sum of the periods spend waiting to get into memory, waiting in the ready queue, executing on the CPU, and doing I/O.
+<br><br>
+<h4>4. Waiting time</h4>
+Waiting time is the sum of the periods spent waiting in the ready queue. <br>
+The CPU scheduling algorithm does not affect the amount of time during which a process executes so does IO. When we talk about CPU scheduling what does scheduling do? Scheduling means the scheduler is assigning the CPU to different processes so once the process get the CPU the time it executes in the CPU or the time it takes in performing input/output operations does not depend upon the scheduler. Because the time a process will spend in the CPU or the time it will take to perform an I/O will depend upon the process not the scheduler. But what the scheduler is concerned is how fast or how frequently can I assign the CPU to a process in the ready queue. So if a process is taking a lot of time in the waiting state waiting to get the CPU and if the scheduler is not able to assign the CPU to that process, then it will take a lot of time waiting for the CPU. The process will starve for the CPU. 
+<br><br>
+<h4>5. Response time</h4>
+In an interactive system, turnaround time may not be
+the best criterion. Often, a process can produce some output fairly early
+and can continue computing new results while previous results are being output to the user. Thus, another measure is the time from the submission
+of a request until the first response is produced. This measure, called
+response time, is the time it takes to start responding, not the time it takes
+to output the response. The turnaround time is generally limited by the
+speed of the output device.
+
+<br><br>
+<h3><b><u>Scheduling Algorithms</u></b></h3>
+<br>
+<h4>1. First-Come, First-Serve Scheduling (FCFS)</h4><br>
+
+<ul>
+    <li>It is the simplest CPU-scheduling algorithm.</li>
+    <li>The process that requests the CPU first is allocated the CPU first.</li>
+    <li>The implementation of the FCFS policy is easily managed with FIFO queue.</li>
+    <li>When a process enters the ready queue, its PCB is linked onto the tail of the queue.</li>
+    <li>When the CPU is free, it is allocated to the process at the head of the queue.</li>
+    <li>The running process is then removed from the queue.</li>
+    <li>Unfortunately, however, FCFS can yield some very long average wait times, particularly if the first process to get there takes a long time. For example, consider the following three processes:
+        <br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Process</th>
+                <th scope="col">Burst Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>P1</td>
+                <td>24</td>
+              </tr>
+              <tr>
+                <td>P2</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>P3</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+    </li>
+    <li>In the first Gantt chart below, process P1 arrives first. The average waiting time for the three processes is ( 0 + 24 + 27 ) / 3 = 17.0 ms.</li>
+    <li>In the second Gantt chart below, the same three processes have an average wait time of ( 0 + 3 + 6 ) / 3 = 3.0 ms. The total run time for the three bursts is the same, but in the second case two of the three finish much quicker, and the other process is only delayed by a short amount.
+        <br><br><img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter6/6_FCFS_Chart1.jpg" alt="">
+        <br><br><img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter6/6_FCFS_Chart2.jpg" alt="">
+    <br></li>
+    <li>This reduction is substantial. Thus, the average waiting time under an FCFS policy is generally not minimal and may very substantially if the process's CPU burst time vary greatly.</li>
+    <li>The FCFS scheduling algorithm is <b>nonpreemptive.</b> <br>
+    Once the CPU has been allocated to a process, that process keeps the CPU until it releases the CPU, either by terminating or by requesting I/O.
+    </li>
+    <li>The FCFS algorithm is thus particularly troublesome for time-sharing systems, where it is important that each user get a share of the CPU at regular intervals.</li>
+    <li>It would be disastrous to allow one process to keep the CPU for an extended period. Therefore it is not an efficient algorithm.</li>
+    <li><b>Convoy Effect</b>: If processes with higher burst time arrived before the processes with smaller burst time, then, smaller processes have to wait for a long time for longer processes to release the CPU.</li>
+    <li>When two processes arrive at the same time then the process with the smaller process id will get the CPU first.</li>
+</ul>
+
+  <b class="formula">Turnaround time = Completion time - Arrival time</b> (from the time it first came to the ready queue till it completely finishes its execution).
+<br><br>
+<b class="formula">Waiting time = Turn around time - Burst time</b>
+ <br><br>
+ <h5>Problem 1</h5>
+<img src="https://lh3.googleusercontent.com/d/14qOzARPCoIJadxnTFaYuxOYNfE4G6tKU" alt="">
+
+
+<br><br>
+<img src="https://lh3.googleusercontent.com/d/1WNGCCY45WEczq3m-7WMooKX_e2z008xR" alt="">
+
+<br><br>
+<img src="https://lh3.googleusercontent.com/d/1JCPRKrBi7hOiZkoegyVcyOc39SBabki-" alt="">
+
+<br><br>
+<h5>Problem 2</h5>
+<center><iframe class="youtubeVid" width="654" height="409" src="https://www.youtube.com/embed/8-BUGte27sk?list=PLBlnK6fEyqRitWSE_AyyySWfhRgyA-rHk" title="First Come First Served Scheduling (Solved Problem 2)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+<br><br>
+<h4>2. Shortest-Job-First Scheduling</h4>
+<br>
+<ul>
+    <li>This algorithm associates with each process the length of the process's next CPU burst.</li>
+    <li>When the CPU is available, it is assigned to the process that has the smallest next CPU burst.</li>
+    <li>If the next CPU burst of two processes are the same, FCFS scheduling is used to break the tie.</li>
+    <li>The SJFS algorithm can be either <b>preemptive</b> or <b>nonpreemptive</b>.</li>
+    <li>Non Preemptive SJFS
+      <img src="https://lh3.googleusercontent.com/d/1SoI7q-Pws7587OxSS2Yfe4oEkZmWry8D" alt="">
+    </li>
+    <li>
+      Preemptive SJFS 
+      <img src="https://lh3.googleusercontent.com/d/1xapr0S54bHsdww3ywiFmTWQNzhGUlRk0" alt="">
+    </li>
+    <li>
+      <b class="formula">Waiting Time = Total waiting time - No. of milliseconds process executed - arrival time</b>
+      <img src="https://lh3.googleusercontent.com/d/1YbtvY9wFr_3ShHPOLnmvdagdUeYeW3wv" alt="">
+    </li>
+    <li>Preemptive SJFS is sometimes called Shortest Remaining Time First Scheduling.</li>
+</ul>
+
+<h5>Problems with SJFS</h5>
+<ul>
+  <li>The real difficulty with the SJFS algorithm is knowing the length of the next CPU request.</li>
+  <li>Although the SJFS algorithm is optimal, it cannot be implemented at the level of short-term CPU scheduling.</li>
+  <li>There is no way to know the length of the next CPU burst.</li>
+</ul>
+<h5>Problem 1</h5>
+<center><iframe  class="youtubeVid" width="654" height="409"  src="https://www.youtube.com/embed/lpM14aWgl3Q?list=PLBlnK6fEyqRitWSE_AyyySWfhRgyA-rHk" title="Shortest Job First Scheduling (Solved Problem 1)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center> 
+<br>
+<h5>Problem 2</h5>
+<center><iframe class="youtubeVid" width="654" height="409"  src="https://www.youtube.com/embed/ypOnf9mnFYg?list=PLBlnK6fEyqRitWSE_AyyySWfhRgyA-rHk" title="Shortest Job First Scheduling (Solved Problem 2)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+
+<br><br>
+<h4>3. Priority Scheduling</h4>
+
+<ul>
+  <li>A priority is associated with each process, and the CPU is allocated to the process with the highest priority.</li>
+  <li>Equal-priority processes are scheduled in FCFS order.</li>
+  <li>An SJFS is simply a priority algorithm where the priority is the inverse of the (predicted) next CPU burst. <br> The larger the CPU burst, the lower the priority, and vice versa.</li>
+  <li>Priority scheduling can be either preemptive or non preemptive.</li>
+  <li>A preemptive priority scheduling algorithm will preempt the CPU if the priority of the newly arrived process is higher than the priority of the currently running process.</li>
+  <li>A nonpreemptive priority scheduling algorithm will simply put the new process at the head of the ready queue.</li>
+  <li>
+    <img src="https://lh3.googleusercontent.com/d/1YRZWMzSZIHnKG8FQlZ6kDgttyfpV-b-_" alt="">
+  </li>
+  <li>
+    For preemptive priority scheduling: <br> <br> <b class="formula"> Waiting Time = Total waiting time - No. of milliseconds process executed - arrival time </b><br>
+    <b class="formula">
+      turnaround time = completion time - arrival time
+    </b>
+  </li>
+  <li>
+    For non preemptive priority scheduling: <br><br>
+    <b class="formula">
+      turnaround time = completion time - arrival time
+    </b><br> <b class="formula"> Waiting Time = turnaround time - burst time </b>
+
+  </li>
+</ul>
+<h5>Problems with Priority Scheduling</h5>
+<ul>
+  <li>A major problem with priority scheduling is <b>indefinite blocking</b> or <b>starvation</b>.</li>
+  <li>A process that is ready to run but waiting for the CPU can be considered blocked.</li>
+  <li>A priority scheduling algorithm can leave some low priority processes waiting indefinitely.</li>
+  <li>In a heavily loaded computer system, a steady stream of higher-priority processes can prevent a low-priority process from ever getting the CPU.</li>
+</ul>
+
+<h5>Solution</h5>
+<ul>
+  <li> A solution to the problem of indefinite blockage of low-priority processes is <b>aging</b>.</li>
+<li>Aging is a technique of gradually increasing the priority of processes that wait in the system for a long time.</li>
+<li>
+  For example:
+  <br>
+  If priorities range from 127(low) to 0(high), we could increase the priority of a waiting process by 1 every 15 minutes. Eventually, even a process with an initial priority of 127 would have the highest priority in the system and would be executed.
+</li>
+
+
+</ul>
+
+<h5>Problem 1 (Note: In this problem, consider: Lower the priority number of a process, higher will be its priority.</h5>
+<img src="https://lh3.googleusercontent.com/d/1nH5dYGnetP1wGUYYeDJDlzGLor_hU7lo" alt="">
+<br><br>
+<img src="https://lh3.googleusercontent.com/d/1pHQIh2kX6ENLOypTP0fRFcWAOfWYx_Wx" alt="">
+<br>
+<h5>Problem 2 (Note: In this problem, consider: Higher the priority number of a process, higher will be its priority.</h5>
+<img src="https://lh3.googleusercontent.com/d/10YR9drq0zkmOibFvSuNylnOFrkpTCCyk" alt="">
+<br><br>
+<img src="https://lh3.googleusercontent.com/d/18Mvgd5gJibi_hwMu2_cAanMeUBM4kKCZ" alt="">
+
+<br><br>
+<h4>4. Round-Robin Scheduling</h4>
+<ul>
+  <li>The round-robin (RR) scheduling algorithm is designed especially for timesharing systems.</li>
+  <li>It is similar to FCFS scheduling, but preemption is added to switch between processes.</li>
+  <li>A small unit of time, called a time quantum or time slice, is defined (generally from 10 to 100 milliseconds).</li>
+  <li>The ready queue is treated as a circular queue.</li>
+  <li>The CPU scheduler goes around the ready queue, allocating the CPU to each process for a time interval of upto 1 time quantum.</li>
+</ul>
+<h5>implementation of RR</h5>
+
+<ul>
+  <li>We keep the ready queue as a FIFO queue of processes.</li>
+  <li>New processes are added to the tail of the ready queue.</li>
+  <li>The CPU scheduler picks the first process from the ready queue, sets a timer to interrupt after 1 time quantum, and dispatches the process.
+
+    <br>
+    One of the two things will then happen:
+    <ol>
+      <li>
+         <ul>
+           <li>The process may have a CPU burst time of less than 1 time quantum.</li>
+           <li>The process itself will release the CPU voluntarily.</li>
+           <li>The CPU scheduler will then proceed to the next process in the ready queue.</li>
+         </ul>
+      </li>
+      <li>
+        <ul>
+          <li>
+            The CPU burst of the currently running process is longer than 1 time quantum, the timer will go off and will cause an interrupt to the OS.
+          </li>
+          <li>
+            A context switch will be executed, and the process will be put at the tail of the ready queue.
+          </li>
+          <li>
+            The CPU scheduler will then select the next process in the ready queue.
+          </li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>Choosing a good time quantum is very important. If we are choosing a very big time quantum, then this RR scheduling algorithm will become FCFS algorithm. And if we are choosing very small time quantum, then there will be too many context switches.</li>
+</ul>
+
+<h5>Turnaround Time and Waiting Time</h5>
+
+<b class="formula">Turn around time = completion time - arrival time</b>
+<br>
+<b class="formula">Waiting time = turn around time - burst time</b>
+<br>
+<b class="formula"> Waiting time = Last start time - arrival time - (preemption x time quantum)</b>
+<br>
+<br>
+<img src="https://lh3.googleusercontent.com/d/1uaq5C_2VrVrSUNaMAJASeFZHUAMrYsHX" alt="">
+<br><br>
+<img src="https://lh3.googleusercontent.com/d/10P43n7ZaX9ckAunpsrawiaajqD6VOMJH" alt="">
+
+
+<h5>Problem 1</h5>
+<i>*** if a new process arrives at the time when a currently running process is going to preempt, then the preempted process will be placed behind the new process in the ready queue.</i><br><br>
+<center><iframe  class="youtubeVid" width="654" height="409" src="https://www.youtube.com/embed/QlCmgBOMjlI?list=PLBlnK6fEyqRitWSE_AyyySWfhRgyA-rHk" title="Round Robin Scheduling - Solved Problem (Part 1)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+
+<br><br>
+<center><iframe class="youtubeVid" width="654" height="409" src="https://www.youtube.com/embed/wioTortHb_g?list=PLBlnK6fEyqRitWSE_AyyySWfhRgyA-rHk" title="Round Robin Scheduling - Solved Problem (Part 2)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+
+<br>
+<h4>5. Multilevel Queue Scheduling</h4>
+
+<br>
+A class of scheduling algorithms has been created for situations in which processes are easily classified into different groups.
+
+<br><br>
+A mulitlevel queue scheduling algorithm partitions the ready queue into several seperate queues.
+
+<br><br>
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter6/6_06_MultilevelQueueScheduling.jpg" alt="">
+<br><br>
+The processes are permanently assigned to one queue, generally based on some property of the process, such as memory size, process priority, or process type.
+
+<br><br>
+Each queue has its own scheduling algorithm.
+<br><br>
+Example: seperate queues might be used for foreground and background processes. 
+<br>The foreground queue might be scheduled by an RR algorithm, while the background queue is scheduled by an FCFS algorithm.
+<br><br>
+In addition, there must be <b>scheduling among the queues</b>, which is commonly implemented as <b>fixed-priority preemptive scheduling</b>.
+<br><br>
+For example, the foreground queue may have absolute priority over the background queue.
+
+<br><br>
+<h4>Multilevel Feedback-Queue Scheduling</h4>
+
+<ul>
+  <li>The MFQS algorith allows a process to move between queues.</li>
+  <li>The idea is to seperate processes according to the characterstics of their CPU bursts.</li>
+  <li>If a process uses too much CPU time, it will be moved to a lower-priority queue.</li>
+  <li>This scheme leaves I/O bound and interactive processes in the higher-priority queues.</li>
+  <li>In addition, a process that waits too long in a lower-priority queue may be moved to a higher priority queue.</li>
+</ul>
+
+<img src="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter6/6_07_MultilevelFeedbackQueues.jpg" alt="">
+<br>
+<ul>
+  <li>Processes inside 2 <sup>nd</sup> queue will not start executing untill 1 <sup>st</sup> queue is not empty. Similiarly processes inside 3 <sup>rd</sup>
+    queue will not execute untill 1 <sup>st</sup> and 2 <sup>nd</sup>
+    queues are not empty.
+  </li>
+  <li>If a process in higher priority queue has burst time more than 1 time quantum then it will be pushed to the end of the immediate lower priority queue.</li>
+</ul>
+
+<h5>In general, a multilevel feedback queue scheduler is defined by the following parameters:</h5>
+<ol>
+  <li>The number of queues.</li>
+  <li>The scheduling algorithm for each queue.</li>
+  <li>The method used to determine when to upgrade a process to a higher priority queue.</li>
+  <li>The method used to determine when to demote a process to a lower priority queue.</li>
+  <li>The method used to determine which queue a process will enter when that process needs service.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('./osPartials/templateEnd') %>
