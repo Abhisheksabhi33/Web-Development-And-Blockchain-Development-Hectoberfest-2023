@@ -9,11 +9,12 @@
 }
 
 body {
-    background-color: var(--orange);
+    background-color:white;
     width: 600px;
     margin: 0 auto;
     padding: 0;
-    font-family: courier, monospace;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: oblique;
   }
   
   form {
@@ -31,8 +32,11 @@ body {
     color: var(--light-grey);
     border: 0;
     border-radius: 4px;
-    padding: 8px 12px;
+    padding: 15px 12px;
     top: 100px;
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: oblique;
   }
   
   .task-button:focus {
@@ -72,3 +76,46 @@ body {
     text-decoration: none;
     color: var(--red);
   }
+
+/* #removeTask{
+  border: 1px solid greenyellow;
+  border-radius:50px;
+} */
+
+
+.mode {
+  /* border: 1px solid #333; */
+  display: inline-block;
+  border-radius: 50px;
+  padding: 0;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  width:fit-content;
+  box-shadow:aquamarine 0px 2px 4px 0px, aquamarine 0px 2px 16px 0px;
+}
+
+#for-light {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-color: white;
+  border: 1px solid silver;
+  background-color:#333;
+}
+
+#for-dark {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin-left: -10px;
+  border-color: white;
+  border: 1px solid silver;
+}
+
+
+#txt{
+  height:40px;
+  width:280px;
+  font-weight: bolder;
+  font-size: larger;
+}
