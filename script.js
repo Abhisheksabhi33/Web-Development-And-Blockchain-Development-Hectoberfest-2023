@@ -1,48 +1,130 @@
-const hourEl = document.querySelector('.hour')
-const minuteEl = document.querySelector('.minute')
-const secondEl = document.querySelector('.second')
-const timeEl = document.querySelector('.time')
-const dateEl = document.querySelector('.date')
-const toggle = document.querySelector('.toggle')
+// create variables
+const lowerdisplay = document.querySelector('.cal-lower');
+const upperdisplay = document.querySelector('.cal-upper');
+const buttons = document.querySelectorAll('.button');
 
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+//for buttons
+let buttonValue = "value";
+let buttonType = "type";
 
-toggle.addEventListener('click', (e) => {
-    const html = document.querySelector('html')
-    if (html.classList.contains('dark')) {
-        html.classList.remove('dark')
-        e.target.innerHTML = 'Dark mode'
-    } else {
-        html.classList.add('dark')
-        e.target.innerHTML = 'Light mode'
+//set variables
+let a = "";
+let b = "";
+let operator = "";
+let temp = "";
+let result = "";
+
+//set toggles
+let isEqualPressed = false;
+let isDigitPressed = false;
+let isOperationPressed = false;
+
+//listen for clicks
+buttons.forEach(button =>{
+    button.addEventListener("click",(e)=>{
+        buttonValue = e.target.dataset.value;
+        buttonType = e.target.dataset.role;
+        clearButtonValue = buttonValue;
+        filterInput();
+        log();
+    })
+});
+window.addEventListener("keydown",filterKeyboardInput);
+
+function filterKeyboardInput(e){
+    let key = e.key;
+    switch (key) {
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+            buttonValue = key;
+            buttonType = "digit";
+            filterInput();
+            break;
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+            buttonValue = key;
+            buttonType = "operation";
+            filterInput();
+            break;
+        case ".":
+            buttonValue=key;
+            buttonType = "decimal";
+            filterInput();
+            break;
+        case "=":
+        case "Enter":
+            buttonValue =key;
+            buttonType = "Equal";
+            filterInput();
+            break;
+        case "BackSpace":
+        case "Delete":
+            buttonValue =key;
+            buttonType = "CE";
+            filterInput();
+            break;
+        case "Escape":
+            buttonValue=key;
+            buttonType="AC";
+            filterInput();
+            break;
+        default:
+            break;
+            
     }
-})
-
-function setTime() {
-    const time = new Date();
-    const month = time.getMonth()
-    const day = time.getDay()
-    const date = time.getDate()
-    const hours = time.getHours()
-    const hoursForClock = hours >= 13 ? hours % 12 : hours;
-    const minutes = time.getMinutes()
-    const seconds = time.getSeconds()
-    const ampm = hours >= 12 ? 'PM' : 'AM'
-
-    hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(hoursForClock, 0, 12, 0, 360)}deg)`
-    minuteEl.style.transform = `translate(-50%, -100%) rotate(${scale(minutes, 0, 60, 0, 360)}deg)`
-    secondEl.style.transform = `translate(-50%, -100%) rotate(${scale(seconds, 0, 60, 0, 360)}deg)`
-
-    timeEl.innerHTML = `${hoursForClock}:${minutes < 10 ? `0${minutes}` : minutes} ${ampm}`
-    dateEl.innerHTML = `${days[day]}, ${months[month]} <span class="circle">${date}</span>`
 }
 
-// StackOverflow https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
-const scale = (num, in_min, in_max, out_min, out_max) => {
-    return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+function filterInput(){
+    if (buttonType==="digit"){
+        if (isEqualPressed && temp==result)
+        {
+            isEqualPressed = false;
+            temp="";
+            b="";
+            result="";
+            storeNumbersInT(buttonValue,buttonType);
+            lowerdisplay.textContent = `${temp}`;
+            isDigitPressed = true;
+        }else if(isEqualPressed)
+        {
+            isEqualPressed=false;
+            temp="";
+            b="";
+            storeNumbersInT(buttonValue,buttonType);
+            lowerdisplay.textContent=`${temp}`;
+            isDigitPressed=true;
+        }
+        else
+        {
+            if (isOperationPressed){
+                temp="";
+                isOperationPressed=false;
+                storeNumbersInT(buttonValue,buttonType);
+                show
+            }
+        }
+    }
+};
+//storing number
+function storeNumbersInT(buttonValue, buttonType){
+    if(temp === "0" && buttonType != 'decimal'){
+        temp = "";
+        return temp += buttonValue;
+    } else if(buttonType === 'decimal' && temp.toString().includes(".") === true){
+        return;
+    } else if(buttonType === 'decimal' && temp === ""){
+        return temp = "0."
+    } else if (overflowDisplay()){
+        return temp;
+    } return temp += buttonValue;
 }
-
-setTime()
-
-setInterval(setTime, 1000)

@@ -1,28 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Theme Clock</title>
-  </head>
-  <body>
-    <!-- Inspired by this dribbble shot https://dribbble.com/shots/5958443-Alarm-clock -->
 
-    <button class="toggle">Dark mode</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <div class="clock-container">
-      <div class="clock">
-        <div class="needle hour"></div>
-        <div class="needle minute"></div>
-        <div class="needle second"></div>
-        <div class="center-point"></div>
-      </div>
-
-      <div class="time"></div>
-      <div class="date"></div>
+<body>
+    <header>
+        <h1>Calculator</h1>
+    </header>
+    <div class="calculator-container">
+        <div class="cal-display">
+            <div class="cal-upper"></div>
+            <div class="cal-lower"></div>
+        </div>
+        <div class="btn-cont">
+            <button class="btn-dark" data-role="operation" data-value="+">+</button>
+            <button class="btn-dark" data-role="operation" data-value="-">-</button>
+            <button class="btn-dark" data-role="operation" data-value="*">*</button>
+            <button class="btn-dark" data-role="operation" data-value="/">/</button>
+            <button class="btn" data-role="digit" data-value="1">1</button>
+            <button class="btn" data-role="digit" data-value="2">2</button>
+            <button class="btn" data-role="digit" data-value="3">3</button>
+            <button class="btn-dark" data-role="clear" data-value="AC">AC</button>
+            <button class="btn" data-role="digit" data-value="4">4</button>
+            <button class="btn" data-role="digit" data-value="5">5</button>
+            <button class="btn" data-role="digit" data-value="6">6</button>
+            <button class="btn" data-role="clear" data-value="CE">CE</button>
+            <button class="btn" data-role="digit" data-value="7">7</button>
+            <button class="btn" data-role="digit" data-value="8">8</button>
+            <button class="btn" data-role="digit" data-value="9">9</button>
+            <button class="btn-dark" data-role="equal" data-value="=" style="grid-row: 4/span 2;grid-column: 4;">=</button>
+            <button class="btn" data-role="digit" data-value="0" style="
+            grid-column: 1/span 2;
+        ">0</button>
+            <button class="btn" data-role="decimal" data-value=".">.</button>
+        </div>
     </div>
 
+
+
+
     <script src="script.js"></script>
-  </body>
+</body>
+
 </html>
