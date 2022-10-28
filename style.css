@@ -1,197 +1,67 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
 body {
-  line-height: 1;
+	line-height: 1;
 }
-ol,
-ul {
-  list-style: none;
+ol, ul {
+	list-style: none;
 }
-blockquote,
-q {
-  quotes: none;
+blockquote, q {
+	quotes: none;
 }
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-/* ======================================================================================================================================================================== */
-header {
-  padding: 10px;
-  background: #8dd2c4;
-}
-h1 {
-  font-size: 3em;
-  text-align: center;
-}
-.calculator-container {
-  width: 400px;
-  height: 620px;
-  padding: 4px 8px;
-  margin-top: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  margin: auto;
-  /* width: 50%; */
-  /* border: 3px solid green; */
-  padding: 10px;
-  /* justify-content: center; */
-}
-.btn-cont {
-  height: 80%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 5px;
-  margin-top: 4px;
-}
-.cal-display {
-  height: 20%;
-  display: grid;
-  background-color: rgb(169, 169, 169, 0.1);
-  border: 1px black solid;
-  border-radius: 5px;
-  box-shadow: 2px 1px 5px 1px rgb(128, 128, 128, 0.2);
-}
-.cal-upper {
-  height: 30%;
-  text-align: end;
-  color: rgb(169, 169, 169, 0.9);
-  padding: 2px 6px;
-  margin-top: 5px;
-}
-.cal-lower {
-  height: 70%;
-  text-align: end;
-  font-size: 2em;
-  margin-top: 5px;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-.button {
-  font-family: inherit;
-  border: 1px black solid;
-  border-radius: 5px;
+/* -------------------MAIN CODE----------------------- */
+#grid {
+  width: 300px;
+  height: 300px; 
+  /* display: flex;        */
+}
+#grid-body{
   display: flex;
-  align-items: center;
   justify-content: center;
-  box-shadow: 2px 1px 5px 1px rgb(128, 128, 128, 0.2);
-  background-color: white;
-  font-size: 1.75em;
+  margin-top: 136px;
+  
 }
-
-.button:hover {
-  background-color: rgb(128, 128, 128, 0.4);
-  cursor: pointer;
-}
-.button:active {
-  background-color: rgb(128, 128, 128, 0.6);
-  transform: translateY(3px);
+.cell {
+  outline: 1px solid red;
+  float: left;
+  height: 100px;
+  width: 100px;    
 }
