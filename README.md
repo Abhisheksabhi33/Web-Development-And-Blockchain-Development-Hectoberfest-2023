@@ -1,6 +1,6 @@
 # Webd-and-Blockchain-development
 
-## Welcome to Hacktober Fest 2022
+## Welcome to Hacktober Fest 2023
 
 • EVERYONE IS WELCOME✨    
 • Contribute anything in In web-development and blockchain-development 🙌
