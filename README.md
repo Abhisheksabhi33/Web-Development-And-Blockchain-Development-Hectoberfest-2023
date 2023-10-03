@@ -37,7 +37,7 @@
 
 • Have 4 pull/merge requests accepted between October 1 and October 31 to complete Hacktoberfest.
 
-• The first 40,000 participants (maintainers and contributors) who complete Hacktoberfest can elect to receive one of two prizes: a tree planted in their name, or the   Hacktoberfest 2022 t-shirt.
+• The first 40,000 participants (maintainers and contributors) who complete Hacktoberfest can elect to receive one of two prizes: a tree planted in their name, or the   Hacktoberfest 2023 t-shirt.
 
 • For more info headover to https://hacktoberfest.com/participation/
 
