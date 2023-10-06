@@ -1,0 +1,211 @@
+:root {
+    --white: #ffffff;
+    --black: #000000;
+    --dk-blue: #2b283a;
+    --blue: #374151;
+    --navy: #111827;
+    --gray: #d1d5db;
+    --dk-gray: #313131;
+}
+
+* {
+    box-sizing: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--navy);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 650px;
+}
+
+/*===============
+    Typography
+================*/
+select, 
+button, 
+section {
+    font-family: 'Roboto', sans-serif;
+}
+
+button, 
+section {
+    font-weight: 500;
+    font-size: .75rem;
+}
+
+select {
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--navy);
+    cursor: pointer;
+}
+
+button {
+    line-height: 1;
+}
+
+section {
+    line-height: 1.5;
+    color: var(--dk-blue);
+    text-align: center;
+}
+
+/*============
+    Layout
+==============*/
+.main-container {
+    position: relative;
+    background: var(--white);
+    margin: 2.5em;
+    border-radius: 6px;
+    width: 550px; 
+}
+
+header {
+    box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.15);
+    padding: 1.5625em;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.color-picker {
+    border: 0.5px solid var(--gray);
+    border-radius: 4px;
+    height: 42px;
+    padding: 0px 2px; 
+    margin-right: .625em;   
+    cursor: pointer;
+}
+
+.color-picker:hover,
+.color-picker:active,
+.scheme-select:hover,
+.scheme-select:active,
+.btn-get:hover,
+.btn-get:active {
+    border: 1px solid var(--black);
+}
+
+.scheme-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    appearance: none;
+    background: var(--white) url('./assets/icon-chevron.png') no-repeat;
+    background-position: 97% 50%;
+    color: var(--navy);
+    border: 1px solid var(--gray);
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);    
+    width: 292px;
+    padding-left: 5px;
+    outline-width: 0;
+}
+
+button {
+    background: var(--white);
+    color: var(--blue);
+    padding: .8125em .6875em;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-get {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    margin-left: .625em;   
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+}
+
+.color-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 70vh;
+    width: 100%;
+}
+
+.scheme-type {
+    position: absolute;
+    top: 17.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--white);
+    font-weight: 500;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black;
+}
+
+.color-text {
+    margin-bottom: 2.1875em;
+    background: none;
+    height: 3.5em;
+    border: none;
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: lighter;
+    letter-spacing: 1.5px;
+    line-height: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: none;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black;
+}
+
+.color-text:hover, 
+.color-text:active {
+    font-weight: bolder;
+}
+
+.hex-values-container {
+    display: flex;
+    justify-content: space-around;
+    height: 2.75em;
+}
+
+.hexText {
+    border: none;
+    width: 90px;  
+    text-align: center;  
+    cursor: pointer;
+}
+
+.hexText:hover, 
+.hexText:active {
+    font-weight: bold;
+    font-size: .8rem;
+}
+
+.modal {
+    position: absolute;
+    bottom: 9em;
+    left: 18em;
+    background: var(--white);
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    border-radius: 4px;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: .5em 1em;
+    justify-content: space-around;
+    align-items: center;
+    display: none;
+}
+
